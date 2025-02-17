@@ -32,36 +32,3 @@ jobs:
         name: O3_paper
         path: docs/O3_paper.pdf
 
-  release_pdf:
-    name: Release O³ Paper on GitHub
-    needs: build_pdf
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
-    - name: Download Compiled PDF
-      uses: actions/download-artifact@v4  # Updated to v4
-      with:
-        name: O3_paper
-        path: docs
-
-    - name: Create GitHub Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: "v1.0-O3-paper"
-        release_name: "O³ Paper Release v1.0"
-        body: "This release includes the latest compiled version of the O³ Model Paper."
-        draft: false
-        prerelease: false
-        files: docs/O3_paper.pdf
-
-  zenodo_trigger:
-    name: Notify Zenodo for DOI
-    needs: release_pdf
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Trigger Zenodo Upload (Manual Step Required)
-      run: echo "Go to Zenodo and publish the new release manually!"
