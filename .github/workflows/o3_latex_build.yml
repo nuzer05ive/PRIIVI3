@@ -2,8 +2,10 @@ name: Build O³ Paper and Release to Zenodo
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'docs/O3_paper.tex'
+      - 'docs/references.bib'
+      - '.github/workflows/build-latex.yml'
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -27,8 +29,7 @@ jobs:
         latexmk -pdf O3_paper.tex
 
     - name: Upload Compiled PDF
-      uses: actions/upload-artifact@v4  # Updated to v4
+      uses: actions/upload-artifact@v4  # Updated to latest version
       with:
         name: O3_paper
         path: docs/O3_paper.pdf
-
