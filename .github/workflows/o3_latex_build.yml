@@ -13,24 +13,23 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # Updated to latest version
 
     - name: Install LaTeX
-      run: sudo apt-get update && sudo apt-get install -y texlive-full
+      run: sudo apt-get update && sudo apt-get install -y texlive-full latexmk
 
     - name: Compile LaTeX Paper
+      working-directory: docs
       run: |
-        cd docs
-        pdflatex O3_paper.tex
-        bibtex O3_paper  # Correct BibTeX command
-        pdflatex O3_paper.tex
-        pdflatex O3_paper.tex
+        latexmk -pdf O3_paper.tex
+        bibtex O3_paper
+        latexmk -pdf O3_paper.tex
 
     - name: Upload Compiled PDF
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # Updated to v4
       with:
         name: O3_paper
-        path: docs/O3_paper.pdf  # Correct path
+        path: docs/O3_paper.pdf
 
   release_pdf:
     name: Release O³ Paper on GitHub
@@ -38,10 +37,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
     - name: Download Compiled PDF
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4  # Updated to v4
       with:
         name: O3_paper
+        path: docs
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
@@ -51,7 +54,7 @@ jobs:
         body: "This release includes the latest compiled version of the O³ Model Paper."
         draft: false
         prerelease: false
-        files: O3_paper.pdf
+        files: docs/O3_paper.pdf
 
   zenodo_trigger:
     name: Notify Zenodo for DOI
