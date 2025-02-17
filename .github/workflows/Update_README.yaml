@@ -1,0 +1,71 @@
+name: Update README.md Automatically
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update_readme:
+    name: Update README
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Update README Content
+      run: |
+        echo "# BRiDgit.ai - Recursive Knowledge Optimization" > README.md
+        echo "" >> README.md
+        echo "### 🚀 Personal Research Hub" >> README.md
+        echo "Welcome to my **GitHub Pages site**, where I showcase my research on **Quantum Relativity Bridging Model (QRBM)**, **Recursive Fractal Retrograde Model (RFRM)**, and **Harmonic Optimization Frameworks**." >> README.md
+        echo "" >> README.md
+        echo "## 🔹 About This Repository" >> README.md
+        echo "This repository powers my **personal research website**, hosted at: " >> README.md
+        echo "➡️ [https://nuzer05ive.github.io](https://nuzer05ive.github.io)" >> README.md
+        echo "" >> README.md
+        echo "### 🌌 Research Topics Covered:" >> README.md
+        echo "- **Recursive Fractal Retrograde Model (RFRM)** – A novel framework for recursive optimization across physics, AI, and mathematics." >> README.md
+        echo "- **Quantum Relativity Bridging Model (QRBM)** – A unification theory connecting prime numbers, relativity, and quantum mechanics." >> README.md
+        echo "- **The Prime Conch-jecture** – A recursive attractor model for predicting prime number distribution." >> README.md
+        echo "- **BRiDgit.ai Optimization** – Structuring knowledge recursively for optimal efficiency." >> README.md
+        echo "" >> README.md
+        echo "## 📜 My Published Research" >> README.md
+        echo "### 📝 O³ Model: Recursive Toroidal Prime Stabilization and Unified Quantum Harmonics" >> README.md
+        echo "[![DOI](https://zenodo.org/badge/925914572.svg)](https://doi.org/10.5281/zenodo.14883858)" >> README.md
+        echo "" >> README.md
+        echo "📄 **Read the full paper:** [O³ Paper (PDF)](https://github.com/nuzer05ive/nuzer05ive.github.io/blob/main/docs/O3_paper.pdf)" >> README.md
+        echo "" >> README.md
+        echo "## 📂 Repository Structure:" >> README.md
+        echo "- \`index.html\` → Main homepage for my research." >> README.md
+        echo "- \`.gitignore\` → Standard ignore rules for GitHub Pages (Jekyll template recommended)." >> README.md
+        echo "- \`LICENSE\` → Open-source MIT license for public collaboration." >> README.md
+        echo "- \`README.md\` → This file, providing an overview of the site." >> README.md
+        echo "- \`docs/O3_paper.pdf\` → My published research paper." >> README.md
+        echo "- Future folders for research documentation, papers, and visual proofs." >> README.md
+        echo "" >> README.md
+        echo "## 📜 License" >> README.md
+        echo "This project is licensed under the **MIT License**, allowing free use and modification with attribution." >> README.md
+        echo "" >> README.md
+        echo "## 🛠️ How to Contribute" >> README.md
+        echo "If you are interested in collaborating on research topics like **recursive optimization, AI structuring, and prime number theory**, feel free to open an **Issue** or submit a **Pull Request**." >> README.md
+        echo "" >> README.md
+        echo "## 🔗 Links" >> README.md
+        echo "- 🌍 **Website:** [https://nuzer05ive.github.io](https://nuzer05ive.github.io)" >> README.md
+        echo "- 📄 **Zenodo DOI:** [10.5281/zenodo.14883858](https://doi.org/10.5281/zenodo.14883858)" >> README.md
+        echo "- 📄 **GitHub Pages:** [https://github.com/nuzer05ive/nuzer05ive.github.io](https://github.com/nuzer05ive/nuzer05ive.github.io)" >> README.md
+        echo "- 📄 **arXiv Profile:** *(Add arXiv link when available)*" >> README.md
+        echo "- 🧠 **GitHub:** [https://github.com/nuzer05ive](https://github.com/nuzer05ive)" >> README.md
+        echo "" >> README.md
+        echo "---" >> README.md
+        echo "🚀 *Researching the recursive structures of reality—one equation at a time.*" >> README.md
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        git commit -m "Automated README update for BRiDgit.ai, Zenodo DOI, and paper link"
+        git push
