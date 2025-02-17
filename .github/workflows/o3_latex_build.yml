@@ -24,6 +24,7 @@ jobs:
         latexmk -pdf O3_paper.tex
         bibtex O3_paper
         latexmk -pdf O3_paper.tex
+        latexmk -pdf O3_paper.tex
 
     - name: Upload Compiled PDF
       uses: actions/upload-artifact@v4  # Updated to v4
