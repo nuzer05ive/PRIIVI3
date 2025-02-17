@@ -1,0 +1,62 @@
+name: Build O³ Paper and Release to Zenodo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build_pdf:
+    name: Compile LaTeX Paper
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install LaTeX
+      run: sudo apt-get update && sudo apt-get install -y texlive-full
+
+    - name: Compile LaTeX Paper
+      run: |
+        pdflatex O3_paper.tex
+        bibtex O3_paper.aux || true  # Ignore if not using BibTeX
+        pdflatex O3_paper.tex
+        pdflatex O3_paper.tex
+
+    - name: Upload Compiled PDF
+      uses: actions/upload-artifact@v3
+      with:
+        name: O3_paper
+        path: O3_paper.pdf
+
+  release_pdf:
+    name: Release O³ Paper on GitHub
+    needs: build_pdf
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download Compiled PDF
+      uses: actions/download-artifact@v3
+      with:
+        name: O3_paper
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: "v1.0-O3-paper"
+        release_name: "O³ Paper Release v1.0"
+        body: "This release includes the latest compiled version of the O³ Model Paper."
+        draft: false
+        prerelease: false
+        files: O3_paper.pdf
+
+  zenodo_trigger:
+    name: Notify Zenodo for DOI
+    needs: release_pdf
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Trigger Zenodo Upload (Manual Step Required)
+      run: echo "Go to Zenodo and publish the new release manually!"
