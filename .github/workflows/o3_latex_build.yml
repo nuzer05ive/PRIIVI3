@@ -20,8 +20,9 @@ jobs:
 
     - name: Compile LaTeX Paper
       run: |
+        cd docs
         pdflatex O3_paper.tex
-        bibtex O3_paper.aux || true  # Ignore if not using BibTeX
+        bibtex O3_paper  # Correct BibTeX command
         pdflatex O3_paper.tex
         pdflatex O3_paper.tex
 
@@ -29,7 +30,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: O3_paper
-        path: O3_paper.pdf
+        path: docs/O3_paper.pdf  # Correct path
 
   release_pdf:
     name: Release O³ Paper on GitHub
