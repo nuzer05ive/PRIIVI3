@@ -7,8 +7,8 @@
 \usepackage{setspace}
 \usepackage{tocloft}
 \usepackage{chngcntr} % for numbering equations in the appendix
-\usepackage{fontspec} % only works with XeLaTeX or LuaLaTeX
-\setmainfont{Noto Sans} % or another font known to have the "☝️" glyph
+\usepackage{fontspec} % xelatex or lualatex only
+\setmainfont{DejaVu Sans} % or any font with emoji coverage
 \geometry{margin=1in}
 
 \begin{document}
@@ -434,68 +434,7 @@ A 3D fractal (Sierpi\'nski tetrahedron) showing quantum tunneling nodes at prime
 %---------------------------------
 % References
 %---------------------------------
-\begin{thebibliography}{99}
-
-\bibitem{Pauli1925}
-W. Pauli.
-\textit{On the Connection Between the Completion of Electron Groups in an Atom with the Complex Structure of Spectra}.
-Zeitschrift f\"ur Physik, 31:765--783, 1925.
-
-\bibitem{Poincare1892}
-H. Poincar{\'e}.
-\textit{Les m{\'e}thodes nouvelles de la m{\'e}canique c{\'e}leste}.
-Gauthier-Villars, Paris, 1892.
-
-\bibitem{Newton1687}
-I. Newton.
-\textit{Philosophiae Naturalis Principia Mathematica}.
-Royal Society, London, 1687.
-
-\bibitem{Lorentz1904}
-H. A. Lorentz.
-\textit{Electromagnetic phenomena in a system moving with any velocity less than that of light}.
-Proc. R. Neth. Acad. Arts Sci., 6:809--831, 1904.
-
-\bibitem{Planck1900}
-M. Planck.
-\textit{\"Uber eine Verbesserung der Wienschen Spektralgleichung}.
-Verh. Dtsch. Phys. Ges., 2:202--204, 1900.
-
-\bibitem{Archimedes287BC}
-Archimedes.
-\textit{Works of Archimedes}.
-287 BC, Public Domain / Various Translations.
-
-\bibitem{Fibonacci1202}
-L. Fibonacci.
-\textit{Liber Abaci}.
-1202, Public Domain / Various Translations.
-
-\bibitem{Pythagoras500BC}
-Pythagoras.
-\textit{Collected Teachings}.
-500 BC, Oral Tradition / Various Transcriptions.
-
-\bibitem{Euler1736}
-L. Euler.
-\textit{De Progressionibus Transcendentibus seu Observationes circa Seriem Infinitam $1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \dots$}.
-Comment. Acad. Sci. Petropol., 8:174--193, 1736.
-
-\bibitem{Euclid300BC}
-Euclid.
-\textit{Elements}.
-300 BC, Public Domain / Various Translations.
-
-\bibitem{Ribenboim1996}
-P. Ribenboim.
-\textit{The New Book of Prime Number Records}.
-Springer, New York, 1996.
-
-\bibitem{Hardy1979}
-G. H. Hardy.
-\textit{Collected Papers of G.H. Hardy}.
-Clarendon Press, Oxford, 1979.
-
-\end{thebibliography}
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
