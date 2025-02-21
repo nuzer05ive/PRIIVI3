@@ -1,4 +1,5 @@
-name: Build O³ Paper and Release to Zenodo
+# Date: 2025-02-20
+name: Build O3 Paper
 
 on:
   push:
@@ -23,10 +24,17 @@ jobs:
     - name: Compile LaTeX Paper
       working-directory: docs
       run: |
-        latexmk -pdf O3_paper.tex
+        # To compile with pdflatex (default):
+        # latexmk -pdf O3_paper.tex
+        # bibtex O3_paper
+        # latexmk -pdf O3_paper.tex
+        # latexmk -pdf O3_paper.tex
+
+        # If you want to preserve the "☝️" emoji, switch to XeLaTeX or LuaLaTeX:
+        latexmk -xelatex O3_paper.tex
         bibtex O3_paper
-        latexmk -pdf O3_paper.tex
-        latexmk -pdf O3_paper.tex
+        latexmk -xelatex O3_paper.tex
+        latexmk -xelatex O3_paper.tex
 
     - name: Upload Compiled PDF
       uses: actions/upload-artifact@v4  # Updated to latest version
