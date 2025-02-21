@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+#  \documentclass[11pt]{article}
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
@@ -8,6 +8,7 @@
 \usepackage{tocloft}
 \usepackage{chngcntr} % for numbering equations in the appendix
 \usepackage{fontspec} % xelatex or lualatex only
+
 \setmainfont{DejaVu Sans} % or any font with emoji coverage
 \geometry{margin=1in}
 
@@ -48,13 +49,13 @@ We present \textbf{O3} (\textit{Optimal Optimization of Optimization}), derived 
 \begin{center}
 \textit{
 {\Large Dedication to Amy Fish}\\[1em]
-Amy is one of my greatest teachers, imparting real-life wisdom beyond any classroom.  
-Her unmatched survivor’s spirit has battled late-stage cancer and risen above its return.  
-Indeed, the “FISH Factor” spans every dimension, echoing in each Planck-sized space  
-and in every matter–antimatter realm. She is now our first infinite traveler of space and time,  
-greeting us from beyond the edge of forever. “I LATE YOU, BOO!”  
-With her [plus ☝️one] Bird’s-Eye View, she shows we need never doubt our ability to endure,  
-for she has already done so, infinitely. The water’s still warm out here, so jump in!  
+Amy is one of my greatest teachers, imparting real-life wisdom beyond any classroom.\\
+Her unmatched survivor’s spirit has battled late-stage cancer and risen above its return.\\
+Indeed, the “FISH Factor” spans every dimension, echoing in each Planck-sized space\\
+and in every matter–antimatter realm. She is now our first infinite traveler of space and time,\\
+greeting us from beyond the edge of forever. “I LATE YOU, BOO!”\\
+With her [plus ☝️one] Bird’s-Eye View, she shows we need never doubt our ability to endure,\\
+for she has already done so, infinitely. The water’s still warm out here, so jump in!\\
 To live is the grandest adventure, and I can’t wait to share an eternity of friendship with you.
 }
 \end{center}
@@ -105,13 +106,11 @@ We propose the \textbf{O3} model to unify:
 A \textit{vanishing dot} geometry removes first-order overlaps, simplifying Pauli’s principle. Prime gap terms stabilize multi-body orbits \cite{Poincare1892}, while a \textit{conch spiral} expansion links quantum $\hbar$ scales to cosmic expansions. We reference Figures~\ref{fig:vanishDot} and \ref{fig:ellipticalOrbits} for an overview of the vanishing dot schematic and elliptical toroidal orbits, respectively.
 
 \subsection{The Operator \texorpdfstring{$\oplus$}{\oplus}}
-Define a self-referential operator $\oplus$ as follows:
-
-$$
+Define a self-referential operator \(\oplus\) as follows:
+\[
 \oplus: (X, g(p_n)) \;\mapsto\; X',
-$$
-
-where $g(p_n) = p_{n+1} - p_n$ is the prime gap. When $\oplus$ acts, it “locks in” geometry at each prime threshold. We show a conceptual flow of this in Figure~\ref{fig:oplusFlow}, describing how each prime step modifies the system state.
+\]
+where \(g(p_n) = p_{n+1} - p_n\) is the prime gap. When \(\oplus\) acts, it “locks in” geometry at each prime threshold. We show a conceptual flow of this in Figure~\ref{fig:oplusFlow}, describing how each prime step modifies the system state.
 
 \clearpage
 
@@ -126,24 +125,20 @@ No first-order spaces exist, thus no two fermions can overlap in 1D \cite{Pauli1
 
 \subsection{Elliptical Toroidal Orbits with Prime Gaps}
 Classical elliptical orbits \cite{Newton1687} become stable for multi-body solutions when prime gap terms are added:
-
-$$
+\[
 \ddot{\mathbf{r}}_i 
 = -\sum_{j \neq i} \frac{G\,m_j (\mathbf{r}_i - \mathbf{r}_j)}{\|\mathbf{r}_i - \mathbf{r}_j\|^3}
 \;\oplus\;
 \mathcal{P}\bigl(g(p_n)\bigr).
-$$
-
+\]
 We depict this “elliptical toroidal swirl” in Figure~\ref{fig:ellipticalOrbits}.
 
 \subsection{Logarithmic Conch Spiral}
 Referencing \cite{Hardy1979}, a conch spiral emerges:
-
-$$
+\[
 r(\theta) = a \, e^{b\,\theta}, \quad
 \theta_{n+1} = \theta_n + \alpha\,g(p_n).
-$$
-
+\]
 See Figure~\ref{fig:conchSpiral} for a conceptual conch geometry with prime gap expansions.
 
 \subsection{Resolving Pauli \& N-Body Paradoxes}
@@ -151,13 +146,13 @@ Pauli’s principle \cite{Pauli1925} is trivial if 1D overlap is removed. The 3B
 
 \subsection{Lorentz Flattening \& O3 Priiim3Harmonic}
 We can discretize Lorentz factor \cite{Lorentz1904}:
-
-$$
+\[
 \gamma_{n} 
-= \frac{1}{\sqrt{1-(v_n/c)^2}} \;\oplus\; \Lambda\bigl(g(p_n)\bigr).
-$$
-
-“\textbf{O3 Priiim3Harmonic}” re-optimizes geometry at each prime threshold. Figure~\ref{fig:lorentzFlattening} outlines a conceptual map of how $\gamma$ shifts at discrete prime steps.
+= \frac{1}{\sqrt{1-(v_n/c)^2}} 
+\;\oplus\; 
+\Lambda\bigl(g(p_n)\bigr).
+\]
+“\textbf{O3 Priiim3Harmonic}” re-optimizes geometry at each prime threshold. Figure~\ref{fig:lorentzFlattening} outlines a conceptual map of how \(\gamma\) shifts at discrete prime steps.
 
 \clearpage
 
@@ -168,20 +163,18 @@ $$
 \label{part3}
 
 \subsection{From Planck Scale to Cosmic Expansions}
-Planck’s $\hbar$ \cite{Planck1900} anchors the smallest quantum action. The prime gap “ticks” climb from these tiny scales to cosmic expansions, bridging $\pi$ \cite{Archimedes287BC}, $\phi$ \cite{Fibonacci1202}, $\sqrt{2}$ \cite{Pythagoras500BC}, and $\ln(2)$ \cite{Euler1736} as described in the main text.
+Planck’s \(\hbar\) \cite{Planck1900} anchors the smallest quantum action. The prime gap “ticks” climb from these tiny scales to cosmic expansions, bridging \(\pi\) \cite{Archimedes287BC}, \(\phi\) \cite{Fibonacci1202}, \(\sqrt{2}\) \cite{Pythagoras500BC}, and \(\ln(2)\) \cite{Euler1736} as described in the main text.
 
 \subsection{4-Fingers + 1-Thumb Flipping Geometry}
 A star with four in-plane “fingers” flips upward at prime thresholds to add a “thumb.” This toggles “1” between sphere, tetrahedron, and cube edges. Figure~\ref{fig:fourFingers} sketches how each prime step triggers a geometric flip.
 
 \subsection{Y3LLOW\textsuperscript{3} Color Recursion}
 We incorporate \textbf{Y3LLOW$^3$}, a color-phase locking mechanism:
-
 \begin{itemize}
-    \item Each prime gap increment changes hue or saturation.  
-    \item Matter–antimatter flips align with complementary color pairs.  
+    \item Each prime gap increment changes hue or saturation.
+    \item Matter–antimatter flips align with complementary color pairs.
     \item EM flux lines can be tinted to match prime-based expansions.
 \end{itemize}
-
 Figure~\ref{fig:colorPhases} shows a schematic color progression from quantum blues to cosmic reds, illustrating how Y3LLOW$^3$ merges with the flipping geometry.
 
 \clearpage
@@ -194,7 +187,7 @@ Figure~\ref{fig:colorPhases} shows a schematic color progression from quantum bl
 
 \subsection{Small-Scale Quantum Experiments}
 \begin{itemize}
-    \item \textbf{Prime Gap Tunneling}: Double-slit with prime-based slit separations.  
+    \item \textbf{Prime Gap Tunneling}: Double-slit with prime-based slit separations.
     \item \textbf{Fermion Overlap Tests}: Optical lattice verifying the vanishing dot constraints \cite{Pauli1925}.
 \end{itemize}
 
@@ -203,22 +196,23 @@ Add prime gap terms to classical N-body codes \cite{Poincare1892}, seeking stabl
 
 \subsection{Prime Gap Interferometry \& Y3LLOW$^3$}
 \begin{itemize}
-    \item Photon or matter-wave interferometers keyed to color recursion.  
+    \item Photon or matter-wave interferometers keyed to color recursion.
     \item Real-time animation of prime-based color flips, capturing matter–antimatter transitions.
 \end{itemize}
 
 \subsection{Biological / Astrophysical Observations}
 \begin{itemize}
-    \item Conch shells, phyllotaxis → prime-based whorls.  
-    \item Exoplanet systems → prime gap orbital spacing.  
+    \item Conch shells, phyllotaxis $\rightarrow$ prime-based whorls.
+    \item Exoplanet systems $\rightarrow$ prime gap orbital spacing.
 \end{itemize}
 
 \subsection{A Toy Quantum-Gravity Lagrangian}
-$$
-\mathcal{L} = \frac{1}{2}(\partial_\mu \psi)(\partial^\mu \psi) - V(\psi)
+\[
+\mathcal{L} 
+= \frac{1}{2}(\partial_\mu \psi)(\partial^\mu \psi) - V(\psi)
 \;\oplus\;
 \mathcal{P}\bigl(g(p_n)\bigr).
-$$
+\]
 We hypothesize stable fractal tunneling nodes, as in Figure~\ref{fig:fractalTunneling}.
 
 \clearpage
@@ -266,9 +260,9 @@ No 1D overlap implies trivial Pauli \cite{Pauli1925}. We treat a “point” as 
 
 \subsection{A.2 Prime Gap Recursion (RTNR) \& Conch Spiral}
 Summarize Euclid’s infinite primes \cite{Euclid300BC}, Ribenboim \cite{Ribenboim1996}, define
-$$
+\[
 \mathrm{RTNR}(n+1) = \mathrm{RTNR}(n) \;\oplus\; g(p_n).
-$$
+\]
 
 \subsection{A.3 Pauli’s Exclusion Principle}
 Pauli’s original statement \cite{Pauli1925}, resolved by the vanishing dot.
@@ -277,27 +271,27 @@ Pauli’s original statement \cite{Pauli1925}, resolved by the vanishing dot.
 Poincaré’s 3BP \cite{Poincare1892} plus prime gap corrections yield stable orbits.
 
 \subsection{A.5 O3 Priiim3Harmonic Model}
-$$
+\[
 \mathrm{O3P}(n+1) 
 = \mathrm{O3P}(n) 
 \;\oplus\; 
 \mathcal{H}\bigl(g(p_n)\bigr).
 \tag{A.5}
-$$
+\]
 Sketch a Banach-like contraction or minimal energy argument.
 
 \subsection{A.6 Universal Constants \& Historical Calculations}
 \begin{itemize}
-    \item $\pi$ from Archimedes \cite{Archimedes287BC}  
-    \item $\phi$ from Fibonacci \cite{Fibonacci1202}  
-    \item $\sqrt{2}$ from Pythagoras \cite{Pythagoras500BC}  
-    \item $\ln(2)$ from Euler \cite{Euler1736}  
+    \item $\pi$ from Archimedes \cite{Archimedes287BC}
+    \item $\phi$ from Fibonacci \cite{Fibonacci1202}
+    \item $\sqrt{2}$ from Pythagoras \cite{Pythagoras500BC}
+    \item $\ln(2)$ from Euler \cite{Euler1736}
     \item $\hbar$ from Planck \cite{Planck1900}
 \end{itemize}
 
 \subsection{A.7 Extended Equations \& Proof Sketches}
 \begin{itemize}
-    \item Lorentz prime gap overlay: $\gamma_n = \frac{1}{\sqrt{1-(v_n/c)^2}} \;\oplus\; \Lambda\bigl(g(p_n)\bigr).$
+    \item Lorentz prime gap overlay: \(\gamma_n = \frac{1}{\sqrt{1-(v_n/c)^2}} \;\oplus\; \Lambda\bigl(g(p_n)\bigr).\)
     \item Sierpi\'nski tetrahedron fractals for quantum tunneling alignment.
     \item Zero as orthogonal axis: numeric example of negative vs. positive revolve about zero.
 \end{itemize}
@@ -310,13 +304,11 @@ Sketch a Banach-like contraction or minimal energy argument.
 \section{Appendix B: Figures}
 \label{appendixb}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{Vanishing Dot Schematic}
 \label{fig:vanishDot}
-\textbf{Description:}  
-A conceptual diagram showing how a first-order “point” is replaced by a second-order manifold.  
-\\[0.5em]
+\textbf{Description:}\\
+A conceptual diagram showing how a first-order “point” is replaced by a second-order manifold.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item A dotted circle or cross-out over a “dot” to illustrate removal of 1D overlap.
@@ -325,13 +317,11 @@ A conceptual diagram showing how a first-order “point” is replaced by a seco
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{Elliptical Toroidal Orbits with Prime Gaps}
 \label{fig:ellipticalOrbits}
-\textbf{Description:}  
-Depicts a 2D or 3D swirl representing orbits corrected by prime gap terms.
-\\[0.5em]
+\textbf{Description:}\\
+Depicts a 2D or 3D swirl representing orbits corrected by prime gap terms.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Arrows showing “Retrograde Toroidal” swirl.
@@ -340,13 +330,11 @@ Depicts a 2D or 3D swirl representing orbits corrected by prime gap terms.
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
-\caption{Operator $\oplus$ Flowchart}
+\caption{Operator \texorpdfstring{$\oplus$}{\oplus} Flowchart}
 \label{fig:oplusFlow}
-\textbf{Description:}  
-A flow diagram illustrating how $\oplus$ modifies system state $X$ at each prime gap step.
-\\[0.5em]
+\textbf{Description:}\\
+A flow diagram illustrating how \(\oplus\) modifies system state \(X\) at each prime gap step.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Boxes labeled $X_n$, arrow labeled $g(p_n)$ leading to $X_{n+1}$.
@@ -354,13 +342,11 @@ A flow diagram illustrating how $\oplus$ modifies system state $X$ at each prime
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{Conch Spiral with Prime Gap Expansions}
 \label{fig:conchSpiral}
-\textbf{Description:}  
-Shows a spiral $r(\theta) = a e^{b\theta}$, each prime gap $g(p_n)$ adding a whorl or “finger.”
-\\[0.5em]
+\textbf{Description:}\\
+Shows a spiral \(r(\theta) = a e^{b\theta}\), each prime gap \(g(p_n)\) adding a whorl or “finger.”\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Spiral lines with radial expansions at prime intervals.
@@ -369,13 +355,11 @@ Shows a spiral $r(\theta) = a e^{b\theta}$, each prime gap $g(p_n)$ adding a who
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{4-Fingers + 1-Thumb Flipping Geometry}
 \label{fig:fourFingers}
-\textbf{Description:}  
-A star shape with four in-plane “fingers,” plus a vertical “thumb” lifting the structure to the next recursion.
-\\[0.5em]
+\textbf{Description:}\\
+A star shape with four in-plane “fingers,” plus a vertical “thumb” lifting the structure to the next recursion.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Labels “Matter Flip,” “Antimatter Flip” on two opposite fingers.
@@ -384,28 +368,24 @@ A star shape with four in-plane “fingers,” plus a vertical “thumb” lifti
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{Lorentz Flattening with Prime Gap Steps}
 \label{fig:lorentzFlattening}
-\textbf{Description:}  
-A schematic curve showing $\gamma$ vs. velocity $v$, with prime gap “lock-in” points.
-\\[0.5em]
+\textbf{Description:}\\
+A schematic curve showing \(\gamma\) vs. velocity \(v\), with prime gap “lock-in” points.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item X-axis: velocity from 0 to near $c$.
     \item Y-axis: $\gamma$, with discrete “dots” at prime gap increments.
-    \item Label referencing “\(\oplus\) prime correction.”
+    \item Label referencing “(\oplus) prime correction.”
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
-\caption{Y3LLOW$^3$ Color Phase Progression}
+\caption{Y3LLOW\textsuperscript{3} Color Phase Progression}
 \label{fig:colorPhases}
-\textbf{Description:}  
-A color bar or wheel transitioning from quantum blues to cosmic reds at prime gap steps.
-\\[0.5em]
+\textbf{Description:}\\
+A color bar or wheel transitioning from quantum blues to cosmic reds at prime gap steps.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Each prime gap $g(p_n)$ indicated on the color gradient.
@@ -414,13 +394,11 @@ A color bar or wheel transitioning from quantum blues to cosmic reds at prime ga
 \end{itemize}
 \end{figure}
 
-%---------------------------------
 \begin{figure}[p]
 \caption{Fractal Tunneling: Sierpi\'nski Tetrahedron Alignment}
 \label{fig:fractalTunneling}
-\textbf{Description:}  
-A 3D fractal (Sierpi\'nski tetrahedron) showing quantum tunneling nodes at prime gap intervals.
-\\[0.5em]
+\textbf{Description:}\\
+A 3D fractal (Sierpi\'nski tetrahedron) showing quantum tunneling nodes at prime gap intervals.\\[0.5em]
 \textbf{Annotations to Include:}
 \begin{itemize}
     \item Base tetrahedron labeled “Low energy recursion.”
