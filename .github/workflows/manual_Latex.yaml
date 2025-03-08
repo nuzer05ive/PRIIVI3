@@ -15,6 +15,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        
 
       - name: Install TeX Live (basic + extra packages)
         run: |
@@ -39,7 +40,7 @@ jobs:
           pdflatex ${{ github.event.inputs.paperFolder }}.tex
 
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pdf-output
           path: docs/${{ github.event.inputs.paperFolder }}/${{ github.event.inputs.paperFolder }}.pdf
