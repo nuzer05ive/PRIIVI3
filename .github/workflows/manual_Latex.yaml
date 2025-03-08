@@ -6,7 +6,7 @@ on:
       paperFolder:
         description: "Folder inside /docs containing the .tex (same name) and references.bib"
         required: true
-        default: "rh-proof"
+        default: "rh_proof"
 
 jobs:
   build-latex:
