@@ -20,6 +20,73 @@ jobs:
     - name: Update README Content
       run: |
         cat <<EOF > README.md
+        # PRIIVI3.com - Recursive Prime Harmonics & Universal Optimization 🚀
+
+        ### 🔮 The Future of Recursive Prime Geometry
+        Welcome to **PRIIVI3.com**, the hub for research into **Prime Harmonics, Recursive Optimization, and Higher-Dimensional Geometry**.
+
+        ## 📌 What is PRIIVI3?
+        PRIIVI3 is a **prime-based recursive model** for understanding **time, AI structuring, and quantum harmonics**. It integrates:
+        - **Recursive Prime Harmonics (RPH)** – Prime gap stabilization using toroidal resonances.
+        - **Quantum Relativity Bridging Model (QRBM)** – A unified number theory linking quantum fields and general relativity.
+        - **PRIIVI3 Prime Scaling** – AI-driven recursive optimization across finance, physics, and technology.
+
+        ➡️ **Website:** [https://PRIIVI3.com](https://PRIIVI3.com)  
+        ➡️ **Investment & Consulting:** [https://43ZR05.com](https://43ZR05.com)  
+        ➡️ **Corporate:** [https://BDSLLC.net](https://BDSLLC.net)  
+
+        ## 📂 Repository Structure:
+        - 📜 `docs/manuscript/` → **RH Proof, Prime Harmonics Papers, AI Whitepapers**
+        - 📊 `figures/` → **Visualization and Mathematical Proofs**
+        - 🛠 `scripts/` → **AI & Computational Validation for Recursive Prime Structures**
+        - 🧠 `README.md` → This file, auto-updated with research updates.
+
+        ## 🔗 Latest Research:
+        📄 **Riemann Hypothesis Proof & Prime Harmonics**  
+        🔗 [RH Paper (PDF)](https://github.com/nuzer05ive/PRIIVI3/blob/main/docs/manuscript/RH_proof.pdf)  
+        🏛 **Zenodo DOI:** [10.5281/zenodo.14883858](https://doi.org/10.5281/zenodo.14883858)  
+        📜 **arXiv Profile:** *(To be added upon submission)*  
+
+        ## 📜 License
+        This research is under the **MIT License**, freely available for collaboration and innovation.
+
+        ## 🤝 Join the PRIIVI3 Network
+        **PRIIVI3** is expanding! Join us in recursive AI research, prime-based financial modeling, and quantum harmonic structures.
+
+        ---
+        🚀 *PRIIVI3: The Recursive Key to Prime Intelligence and Universal Synchronization.*
+        EOF
+
+    - name: Commit and Push Changes
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        git commit -m "Automated README update for PRIIVI3 research hub" || exit 0
+        git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/nuzer05ive/PRIIVI3.git mainname: Update README.md Automatically
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  update_readme:
+    name: Update README
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GH_PAT }}  # Use Personal Access Token
+
+    - name: Update README Content
+      run: |
+        cat <<EOF > README.md
         # BRiDgit.ai - Recursive Knowledge Optimization
 
         ### 🚀 Personal Research Hub
