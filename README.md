@@ -1,44 +1,35 @@
-# BRiDgit.ai - Recursive Knowledge Optimization
+# PRIIVI3.com - Recursive Prime Harmonics & Universal Optimization 🚀
 
-### 🚀 Personal Research Hub
-Welcome to my **GitHub Pages site**, where I showcase my research on **Quantum Relativity Bridging Model (QRBM)**, **Recursive Fractal Retrograde Model (RFRM)**, and **Harmonic Optimization Frameworks**.
+### 🔮 The Future of Recursive Prime Geometry
+Welcome to **PRIIVI3.com**, the hub for research into **Prime Harmonics, Recursive Optimization, and Higher-Dimensional Geometry**.
 
-## 🔹 About This Repository
-This repository powers my **personal research website**, hosted at:  
-➡️ [https://nuzer05ive.github.io](https://nuzer05ive.github.io)
+## 📌 What is PRIIVI3?
+PRIIVI3 is a **prime-based recursive model** for understanding **time, AI structuring, and quantum harmonics**. It integrates:
+- **Recursive Prime Harmonics (RPH)** – Prime gap stabilization using toroidal resonances.
+- **Quantum Relativity Bridging Model (QRBM)** – A unified number theory linking quantum fields and general relativity.
+- **PRIIVI3 Prime Scaling** – AI-driven recursive optimization across finance, physics, and technology.
 
-### 🌌 Research Topics Covered:
-- **Recursive Fractal Retrograde Model (RFRM)** – A novel framework for recursive optimization across physics, AI, and mathematics.
-- **Quantum Relativity Bridging Model (QRBM)** – A unification theory connecting prime numbers, relativity, and quantum mechanics.
-- **The Prime Conch-jecture** – A recursive attractor model for predicting prime number distribution.
-- **BRiDgit.ai Optimization** – Structuring knowledge recursively for optimal efficiency.
-
-## 📜 My Published Research
-### 📝 O³ Model: Recursive Toroidal Prime Stabilization and Unified Quantum Harmonics
-[![DOI](https://zenodo.org/badge/925914572.svg)](https://doi.org/10.5281/zenodo.14883858)
-
-📄 **Read the full paper:** [O³ Paper (PDF)](https://github.com/nuzer05ive/nuzer05ive.github.io/blob/main/docs/O3_paper.pdf)
+➡️ **Website:** [https://PRIIVI3.com](https://PRIIVI3.com)  
+➡️ **Investment & Consulting:** [https://43ZR05.com](https://43ZR05.com)  
+➡️ **Corporate:** [https://BDSLLC.net](https://BDSLLC.net)  
 
 ## 📂 Repository Structure:
-- `index.html` → Main homepage for my research.
-- `.gitignore` → Standard ignore rules for GitHub Pages (Jekyll template recommended).
-- `LICENSE` → Open-source MIT license for public collaboration.
-- `README.md` → This file, providing an overview of the site.
-- `docs/O3_paper.pdf` → My published research paper.
-- Future folders for research documentation, papers, and visual proofs.
+- 📜  → **RH Proof, Prime Harmonics Papers, AI Whitepapers**
+- 📊  → **Visualization and Mathematical Proofs**
+- 🛠  → **AI & Computational Validation for Recursive Prime Structures**
+- 🧠  → This file, auto-updated with research updates.
+
+## 🔗 Latest Research:
+📄 **Riemann Hypothesis Proof & Prime Harmonics**  
+🔗 [RH Paper (PDF)](https://github.com/nuzer05ive/PRIIVI3/blob/main/docs/manuscript/RH_proof.pdf)  
+🏛 **Zenodo DOI:** [10.5281/zenodo.14883858](https://doi.org/10.5281/zenodo.14883858)  
+📜 **arXiv Profile:** *(To be added upon submission)*  
 
 ## 📜 License
-This project is licensed under the **MIT License**, allowing free use and modification with attribution.
+This research is under the **MIT License**, freely available for collaboration and innovation.
 
-## 🛠️ How to Contribute
-If you are interested in collaborating on research topics like **recursive optimization, AI structuring, and prime number theory**, feel free to open an **Issue** or submit a **Pull Request**.
-
-## 🔗 Links
-- 🌍 **Website:** [https://nuzer05ive.github.io](https://nuzer05ive.github.io)
-- 📄 **Zenodo DOI:** [10.5281/zenodo.14883858](https://doi.org/10.5281/zenodo.14883858)
-- 📄 **GitHub Pages:** [https://github.com/nuzer05ive/nuzer05ive.github.io](https://github.com/nuzer05ive/nuzer05ive.github.io)
-- 📄 **arXiv Profile:** *(Add arXiv link when available)*
-- 🧠 **GitHub:** [https://github.com/nuzer05ive](https://github.com/nuzer05ive)
+## 🤝 Join the PRIIVI3 Network
+**PRIIVI3** is expanding! Join us in recursive AI research, prime-based financial modeling, and quantum harmonic structures.
 
 ---
-🚀 *Researching the recursive structures of reality—one equation at a time.*
+🚀 *PRIIVI3: The Recursive Key to Prime Intelligence and Universal Synchronization.*
