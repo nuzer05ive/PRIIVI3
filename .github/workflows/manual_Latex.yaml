@@ -1,4 +1,42 @@
-name: Manual LaTeX Build
+name: Compile LaTeX & Generate PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder_name:
+        description: 'Enter the folder inside docs/ (e.g., PRL_submission)'
+        required: true
+        type: string
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository (Updated for v4)
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX
+        run: sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra
+
+      - name: Compile LaTeX
+        run: |
+          cd docs/${{ github.event.inputs.folder_name }}
+          pdflatex -interaction=nonstopmode manuscript.tex
+          bibtex manuscript
+          pdflatex manuscript.tex
+          pdflatex manuscript.tex
+
+      - name: Store Versioned PDF
+        run: |
+          mv docs/${{ github.event.inputs.folder_name }}/manuscript.pdf docs/${{ github.event.inputs.folder_name }}/compiled_pdfs/manuscript_v$(date +%Y%m%d%H%M).pdf
+
+      - name: Commit & Push PDFs
+        run: |
+          git config --global user.email "nuzer05ive@gmail.com"
+          git config --global user.name "nuzer05ive"
+          git add docs/${{ github.event.inputs.folder_name }}/compiled_pdfs/*.pdf
+          git commit -m "Auto-compiled PDF for ${{ github.event.inputs.folder_name }}"
+          git push origin mainname: Manual LaTeX Build
 
 on:
   workflow_dispatch:
