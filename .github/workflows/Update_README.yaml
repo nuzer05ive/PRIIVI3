@@ -67,7 +67,7 @@ jobs:
         git commit -m "Automated README update for PRIIVI3 research hub" || exit 0
         git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/nuzer05ive/PRIIVI3.git mainname: Update README.md Automatically
 
-on:
+  on:
   push:
     branches:
       - main
