@@ -1,0 +1,78 @@
+/* PRIIVI3 - Modern Cyber-Geometric Theme */
+
+:root {
+    --primary-color: #ffb400;
+    --secondary-color: #0077ff;
+    --accent-color: #e63946;
+    --bg-dark: #1b1b1b;
+    --bg-light: #f4f4f4;
+    --text-light: #ffffff;
+    --text-dark: #222222;
+    --border-radius: 12px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid var(--accent-color);
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-light);
+    letter-spacing: 2px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: var(--accent-color);
+    color: var(--text-light);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.button:hover {
+    background: var(--primary-color);
+    color: var(--text-dark);
+    transform: scale(1.05);
+}
+
+.section {
+    padding: 50px 20px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border-radius: var(--border-radius);
+    margin: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--bg-dark);
+    color: var(--text-light);
+}
