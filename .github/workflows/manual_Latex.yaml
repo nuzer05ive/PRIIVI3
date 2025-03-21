@@ -4,6 +4,46 @@ on:
   workflow_dispatch:
     inputs:
       folder_name:
+        description: 'Enter the folder inside docs/ (e.g., PRL_submission, IEEE_submission)'
+        required: true
+        type: string
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository (Updated for v4)
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX & BibTeX
+        run: sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra
+
+      - name: Compile LaTeX
+        run: |
+          cd docs/${{ github.event.inputs.folder_name }}
+          pdflatex -interaction=nonstopmode ${{ github.event.inputs.folder_name }}.tex
+          bibtex ${{ github.event.inputs.folder_name }}
+          pdflatex ${{ github.event.inputs.folder_name }}.tex
+          pdflatex ${{ github.event.inputs.folder_name }}.tex
+
+      - name: Store Versioned PDF
+        run: |
+          mkdir -p docs/${{ github.event.inputs.folder_name }}/compiled_pdfs
+          mv docs/${{ github.event.inputs.folder_name }}/${{ github.event.inputs.folder_name }}.pdf \
+             docs/${{ github.event.inputs.folder_name }}/compiled_pdfs/${{ github.event.inputs.folder_name }}_v$(date +%Y%m%d%H%M).pdf
+
+      - name: Commit & Push PDFs
+        run: |
+          git config --global user.email "nuzer05ive@gmail.com"
+          git config --global user.name "nuzer05ive"
+          git add docs/${{ github.event.inputs.folder_name }}/compiled_pdfs/*.pdf
+          git commit -m "Auto-compiled PDF for ${{ github.event.inputs.folder_name }}"
+          git push origin mainname: Compile LaTeX & Generate PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder_name:
         description: 'Enter the folder inside docs/ (e.g., PRL_submission)'
         required: true
         type: string
