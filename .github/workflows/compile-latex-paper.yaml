@@ -1,0 +1,61 @@
+name: Compile LaTeX Paper with BibTeX (Manual Trigger)
+
+on:
+  workflow_dispatch:
+    inputs:
+      foldername:
+        description: 'Folder under docs/ (e.g., TriPetalPyramidRing)'
+        required: true
+        default: 'TriPetalPyramidRing'
+      pdfname:
+        description: 'Final name for compiled PDF (no extension)'
+        required: true
+        default: 'TriPetalPyramidRing'
+
+jobs:
+  build-paper:
+    runs-on: ubuntu-latest
+
+    env:
+      FOLDER: ${{ github.event.inputs.foldername }}
+      PDF_NAME: ${{ github.event.inputs.pdfname }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Generate .bib from cite{} tags (Offline)
+      run: |
+        python .github/scripts/generate_bib.py "${{ env.FOLDER }}"
+
+    - name: Compile LaTeX with BibTeX
+      run: |
+        cd docs/${{ env.FOLDER }}
+        pdflatex "${{ env.FOLDER }}.tex"
+        bibtex "${{ env.FOLDER }}"
+        pdflatex "${{ env.FOLDER }}.tex"
+        pdflatex "${{ env.FOLDER }}.tex"
+
+    - name: Version PDF Output
+      run: |
+        PDF_DIR="docs/${{ env.FOLDER }}/pdfs"
+        mkdir -p "$PDF_DIR"
+        BASE="${{ env.PDF_NAME }}"
+        FINAL="${PDF_DIR}/${BASE}.pdf"
+
+        if [ -f "$FINAL" ]; then
+          n=1
+          while [ -f "${PDF_DIR}/${BASE}.v${n}.pdf" ]; do
+            n=$((n+1))
+          done
+          cp "${BASE}.pdf" "${PDF_DIR}/${BASE}.v${n}.pdf"
+        else
+          cp "${BASE}.pdf" "$FINAL"
+        fi
+
+    - name: Upload versioned PDF artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: PDF-${{ env.PDF_NAME }}
+        path: |
+          docs/${{ env.FOLDER }}/pdfs/*.pdf
