@@ -1,5 +1,3 @@
-<!-- petal_viewer.html — Dynamic Spiral Petal Browser -->
-<!-- Author: Ni1K + ☍00X -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,19 +26,37 @@
         <th>Tex</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>φ³</td>
-        <td>prime_numbers</td>
-        <td><a href="/petals/compiled_pdfs/phi3/rrii_phi3.pdf" target="_blank">📄 View PDF</a></td>
-        <td><a href="/petals/rrii/phi3/rrii_phi3.tex" target="_blank">🧾 View Tex</a></td>
-      </tr>
-      <!-- Add more petals here as they are bloomed -->
+    <tbody id="petalTable">
+      <!-- Dynamic rows injected here -->
     </tbody>
   </table>
 
   <footer>
     <p><a href="/">← Return to PRIIVI3</a></p>
   </footer>
+
+  <script>
+    const petals = [
+      {
+        layer: "φ³",
+        seed: "prime_numbers",
+        pdf: "/petals/compiled_pdfs/phi3/rrii_phi3.pdf",
+        tex: "/petals/rrii/phi3/rrii_phi3.tex"
+      }
+      // Future petals can be added here
+    ];
+
+    const tbody = document.getElementById("petalTable");
+    petals.forEach(p => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${p.layer}</td>
+        <td>${p.seed}</td>
+        <td><a href="${p.pdf}" target="_blank">📄 View PDF</a></td>
+        <td><a href="${p.tex}" target="_blank">🧾 View Tex</a></td>
+      `;
+      tbody.appendChild(row);
+    });
+  </script>
 </body>
 </html>
