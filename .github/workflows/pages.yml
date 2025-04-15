@@ -1,4 +1,4 @@
-name: Deploy PRIIVI3 via GitHub Actions
+name: Deploy PRIIVI3 via GH Actions (v4 Safe)
 
 on:
   push:
@@ -15,22 +15,22 @@ concurrency:
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: 📦 Upload public folder
+      - name: Upload public directory
         uses: actions/upload-pages-artifact@v2
         with:
           path: .
 
-      - name: 🚀 Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
