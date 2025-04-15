@@ -1,0 +1,5 @@
+seed: prime_numbers
+description: Fundamental phi-spiral structure of modular recursion and harmonic absence
+phi_layers: 14
+include_antimatter: true
+color_profile: default

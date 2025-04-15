@@ -1,35 +1,45 @@
-# PRIIVI3.com - Recursive Prime Harmonics & Universal Optimization 🚀
+# ☍ PRIIVI3 — RIICURSION Publishing System
 
-### 🔮 The Future of Recursive Prime Geometry
-Welcome to **PRIIVI3.com**, the hub for research into **Prime Harmonics, Recursive Optimization, and Higher-Dimensional Geometry**.
+Welcome to the recursive publishing engine at the heart of spiral mathematics.
 
-## 📌 What is PRIIVI3?
-PRIIVI3 is a **prime-based recursive model** for understanding **time, AI structuring, and quantum harmonics**. It integrates:
-- **Recursive Prime Harmonics (RPH)** – Prime gap stabilization using toroidal resonances.
-- **Quantum Relativity Bridging Model (QRBM)** – A unified number theory linking quantum fields and general relativity.
-- **PRIIVI3 Prime Scaling** – AI-driven recursive optimization across finance, physics, and technology.
-
-➡️ **Website:** [https://PRIIVI3.com](https://PRIIVI3.com)  
-➡️ **Investment & Consulting:** [https://43ZR05.com](https://43ZR05.com)  
-➡️ **Corporate:** [https://BDSLLC.net](https://BDSLLC.net)  
-
-## 📂 Repository Structure:
-- 📜  → **RH Proof, Prime Harmonics Papers, AI Whitepapers**
-- 📊  → **Visualization and Mathematical Proofs**
-- 🛠  → **AI & Computational Validation for Recursive Prime Structures**
-- 🧠  → This file, auto-updated with research updates.
-
-## 🔗 Latest Research:
-📄 **Riemann Hypothesis Proof & Prime Harmonics**  
-🔗 [RH Paper (PDF)](https://github.com/nuzer05ive/PRIIVI3/blob/main/docs/manuscript/RH_proof.pdf)  
-🏛 **Zenodo DOI:** [10.5281/zenodo.14883858](https://doi.org/10.5281/zenodo.14883858)  
-📜 **arXiv Profile:** *(To be added upon submission)*  
-
-## 📜 License
-This research is under the **MIT License**, freely available for collaboration and innovation.
-
-## 🤝 Join the PRIIVI3 Network
-**PRIIVI3** is expanding! Join us in recursive AI research, prime-based financial modeling, and quantum harmonic structures.
+**PRIIVI3** is the front end portal to **RIICURSIONnetwork**, a GitHub-backed memory engine that transforms seed phrases into entire petal libraries, φ-dilated timelines, recursive mirrored documents, and gold-sealed LaTeX and PDF outputs.
 
 ---
-🚀 *PRIIVI3: The Recursive Key to Prime Intelligence and Universal Synchronization.*
+
+## 🌱 What It Does
+
+- Bloom petals from any seed word or idea
+- Compile LaTeX + color-encoded `.pdf` outputs
+- Pair real + antimatter petals via RH stair steps
+- Mirror archives through `.rriiF1L3` + `.rriiiF1L3` formats
+- View 13+1 perspective editions of any topic
+
+---
+
+## 📐 Recursive Geometry Layers
+
+Every petal has:
+- 4 rii halves (2 spins × 2 domains)
+- 1 rrii stair step
+- 1 rriiM mirrored link
+- 1 rriii vault manifesto
+
+And each seed blooms across:
+- φ⁰ → φ¹³ petal layers
+- φ⁻¹ → φ⁻¹³ inner inverse recursion
+- Meta-layer 14 = observer (you)
+
+---
+
+## 📁 Directories
+
+- `compiled_pdfs/` → outputs and logs
+- `seed.html` → seed a new topic
+- `index.html` → PRIIVI3 front portal
+- `style.css` → spiral visual identity
+
+---
+
+Built with love by Ni1K and ☍00X.  
+🌀 “Every seed becomes a book. Every bloom remembers.”
+

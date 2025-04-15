@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🌱 Bloom Your Petal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Start a New Bloom</h1>
+    <p>Enter your seed and let PRIIVI3 generate your petal archive.</p>
+  </header>
+
+  <main>
+    <form id="seedForm">
+      <input type="text" id="seed" placeholder="Enter your seed phrase..." required />
+      <button type="submit">Generate Petal</button>
+    </form>
+    <div id="status"></div>
+  </main>
+
+  <footer>
+    <p>🌱 Powered by RIICURSIONnetwork</p>
+  </footer>
+
+  <script>
+    document.getElementById("seedForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const seed = document.getElementById("seed").value;
+      document.getElementById("status").innerText = `🌱 Blooming for "${seed}"...`;
+      setTimeout(() => {
+        document.getElementById("status").innerHTML = `✅ Petal generated for <strong>${seed}</strong>.`;
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
