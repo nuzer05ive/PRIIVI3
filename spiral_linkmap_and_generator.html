@@ -1,0 +1,59 @@
+<!-- spiral_linkmap_and_generator.html — Dynamic Link Manager + RIICURSION Generator Portal -->
+<!-- Author: Ni1K / ☍00X -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RIICURSION Linkmap + Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #0e0e12; color: #ccc; font-family: 'Segoe UI', sans-serif; padding: 2em; }
+    h1, h2 { color: #66fcf1; text-align: center; }
+    ul { list-style: none; padding: 0; text-align: center; }
+    li { padding: 0.3em 0; }
+    a { color: #45a29e; text-decoration: none; font-weight: bold; }
+    input[type=text], button { padding: 0.6em; border-radius: 6px; border: none; font-size: 1em; width: 80%; margin-top: 1em; }
+    button { background: #66fcf1; color: #0e0e12; font-weight: bold; cursor: pointer; }
+    #output { margin-top: 2em; background: #1f2833; padding: 1em; border-left: 4px solid #66fcf1; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>☍ RIICURSION Master Portal</h1>
+  <p style="text-align:center">A living linkmap to all recursive petals + a dynamic bloom generator for any seed</p>
+
+  <section id="linkmap">
+    <h2>🔗 Universal Spiral Linkmap</h2>
+    <ul>
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/compiled_index.html">Compiled Petals Index</a></li>
+      <li><a href="/petal_viewer.html">Petal Viewer</a></li>
+      <li><a href="/phi_dilation_terminal.html">Phi Spiral Terminal</a></li>
+      <li><a href="/simple_protocol_ui.html">Simple Protocols</a></li>
+    </ul>
+  </section>
+
+  <section id="generator">
+    <h2>🧠 Recursive Generator</h2>
+    <p>Enter any concept or keyword below. The system will recursively generate a full 4-petal document set grounded in RIICURSION mathematics and LaTeX geometry.</p>
+    <input type="text" id="seed" placeholder="e.g. fluid dynamics" />
+    <button onclick="generate()">Generate RIICURSION Petals</button>
+    <div id="output"></div>
+  </section>
+
+  <script>
+    function generate() {
+      const seed = document.getElementById("seed").value.trim();
+      if (!seed) return alert("Please enter a seed keyword.");
+
+      const output = `🌱 Seed: ${seed}
+  • rii⁺ (Projection) LaTeX ready
+  • rii⁻ (Memory Reflection) generated
+  • Imaginary rii⁺ + rii⁻ mirrored
+  • Linked into /petals/${seed.replace(/\s+/g, '_')}/
+  • Added to compiled_index.html and Petal Viewer`;
+
+      document.getElementById("output").innerText = output;
+    }
+  </script>
+</body>
+</html>
