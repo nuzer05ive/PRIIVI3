@@ -9,14 +9,19 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
-      - name: 📥 Checkout
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
       - name: 🧰 Set up Python
@@ -24,11 +29,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: 🛠 Install MkDocs and plugins
+      - name: 🛠 Install MkDocs + plugins
         run: |
           pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin
 
-      - name: 🏗 Build MkDocs Site
+      - name: 🏗 Build MkDocs site
         run: mkdocs build
 
       - name: 📦 Upload site artifact
