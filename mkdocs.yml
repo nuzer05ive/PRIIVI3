@@ -12,9 +12,11 @@ theme:
       accent: indigo
   logo: assets/glyph.svg
   favicon: assets/favicon.ico
+  - name: 📂 Show site contents
+  run: ls -R site
 nav:
   - Home: index.md
-  - Spiral Tree: spiral_tree_index.md
+  - SpiralTree: spiral_tree_index.md
   - Terminal: phi_dilation_terminal.md
   - Viewer: petal_viewer.md
   - Protocols: simple_protocol_ui.md
