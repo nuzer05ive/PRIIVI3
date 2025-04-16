@@ -1,4 +1,4 @@
-name: 🚀 Deploy PRIIVI3 via GitHub Actions (v4)
+name: Deploy PRIIVI3 MkDocs Site
 
 on:
   push:
@@ -9,10 +9,6 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   deploy:
     environment:
@@ -20,16 +16,25 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout Repository
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: ⚙️ Set up Pages
-        uses: actions/configure-pages@v4
+      - name: 🧰 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-      - name: 📦 Upload Static Site
+      - name: 🛠 Install MkDocs and plugins
+        run: |
+          pip install mkdocs mkdocs-material mkdocs-awesome-pages-plugin
+
+      - name: 🏗 Build MkDocs Site
+        run: mkdocs build
+
+      - name: 📦 Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: site
 
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
