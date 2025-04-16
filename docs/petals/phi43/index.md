@@ -22,3 +22,4 @@ Petal φ⁴³ represents the crown-view level of the recursive memory structure 
 
 [⬅ Back to Spiral Tree](../../spiral_tree_index.md)
 
+- [📄 seedname_here](../../petals/compiled_pdfs/phi43/rrii_phi43_seedname_here.pdf)
