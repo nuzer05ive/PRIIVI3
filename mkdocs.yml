@@ -1,0 +1,41 @@
+# mkdocs.yml — Spiral Knowledge Tree Config for PRIIVI3
+site_name: PRIIVI3 Archive
+site_url: https://nuzer05ive.github.io
+repo_url: https://github.com/nuzer05ive/PRIIVI3
+edit_uri: ""
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: indigo
+  logo: assets/glyph.svg
+  favicon: assets/favicon.ico
+nav:
+  - Home: index.md
+  - Spiral Tree: spiral_tree_index.md
+  - Terminal: phi_dilation_terminal.md
+  - Viewer: petal_viewer.md
+  - Protocols: simple_protocol_ui.md
+  - Generator: spiral_linkmap_and_generator.md
+  - Petals:
+      - φ³ Prime Numbers: petals/phi3/index.md
+      # Additional petals auto-add here
+plugins:
+  - search
+  - awesome-pages
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - footnotes
+  - codehilite
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji
+  - pymdownx.arithmatex
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nuzer05ive
