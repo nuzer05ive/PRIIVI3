@@ -1,4 +1,4 @@
-name: 🚀 Deploy PRIIVI3 to GitHub Pages
+name: 🚀 Deploy PRIIVI3 via GitHub Actions (v4)
 
 on:
   push:
@@ -15,23 +15,22 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Checkout repo
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🧪 Set up Node.js (for future terminal interactivity)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - name: ⚙️ Set up Pages
+        uses: actions/configure-pages@v4
 
-      - name: 🔧 Configure GitHub Pages
-        uses: actions/configure-pages@v3
-
-      - name: 📦 Upload static site to Pages
-        uses: actions/upload-pages-artifact@v2
+      - name: 📦 Upload Static Site
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: ./
 
       - name: 🚀 Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        id: deployment
+        uses: actions/deploy-pages@v3
