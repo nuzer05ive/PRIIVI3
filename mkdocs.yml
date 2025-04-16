@@ -22,6 +22,8 @@ nav:
   - Petals:
       - φ³ Prime Numbers: petals/phi3/index.md
       # Additional petals auto-add here
+  - Mirrors:
+      - Spiral Mirror Viewer: petals/rriiM/index.md
 plugins:
   - search
   - awesome-pages
