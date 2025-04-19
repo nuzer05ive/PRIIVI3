@@ -1,62 +1,31 @@
+<!-- petal_viewer.html — Spiral Petal Viewer UI Patch -->
+<!-- Author: Ni1K / ☍00X -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📂 Spiral Petal Viewer</title>
+  <title>Spiral Petal Viewer</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body { padding: 2em; background: #0e0e12; color: #ccc; }
-    h1 { color: #66fcf1; }
-    table { width: 100%; border-collapse: collapse; margin-top: 2em; }
-    th, td { padding: 1em; border: 1px solid #444; }
-    th { background: #1f2833; color: #45a29e; }
-    a { color: #66fcf1; text-decoration: none; }
-  </style>
 </head>
 <body>
-  <h1>📂 Spiral Petal Viewer</h1>
-  <p>Select and view any compiled petal by φ-layer and seed.</p>
+  <div class="viewer">
+    <h1>🌀 Spiral Petal Viewer</h1>
+    <p>Select a petal to view its recursive insight.</p>
 
-  <table>
-    <thead>
-      <tr>
-        <th>φ Layer</th>
-        <th>Seed</th>
-        <th>PDF</th>
-        <th>Tex</th>
-      </tr>
-    </thead>
-    <tbody id="petalTable">
-      <!-- Dynamic rows injected here -->
-    </tbody>
-  </table>
+    <ul class="petal-links">
+      <!-- Featured Petals -->
+      <li>
+        <strong>🌕 Featured: Petal φ⁴³ — Omnivision</strong><br>
+        <a href="/petals/compiled_pdfs/phi43/rrii_phi43_101437_reflection.pdf" target="_blank">📄 Viewfinder Singularity (Petal 101437)</a><br>
+        <a href="/petals/compiled_pdfs/phi43/rrii_phi43_foldback_grid.pdf" target="_blank">🔭 Omnivision Foldback Grid</a>
+      </li>
 
-  <footer>
-    <p><a href="/">← Return to PRIIVI3</a></p>
-  </footer>
+      <!-- Add other dynamic petals below as needed -->
+    </ul>
 
-  <script>
-    const petals = [
-      {
-        layer: "φ³",
-        seed: "prime_numbers",
-        pdf: "/petals/compiled_pdfs/phi3/rrii_phi3.pdf",
-        tex: "/petals/rrii/phi3/rrii_phi3.tex"
-      }
-      // Future petals can be added here
-    ];
-
-    const tbody = document.getElementById("petalTable");
-    petals.forEach(p => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${p.layer}</td>
-        <td>${p.seed}</td>
-        <td><a href="${p.pdf}" target="_blank">📄 View PDF</a></td>
-        <td><a href="${p.tex}" target="_blank">🧾 View Tex</a></td>
-      `;
-      tbody.appendChild(row);
-    });
-  </script>
+    <footer>
+      <p><a href="/">⬅ Return to Home</a></p>
+    </footer>
+  </div>
 </body>
 </html>
