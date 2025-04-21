@@ -1,0 +1,2 @@
+- name: Debug MkDocs output
+  run: ls -la ./site
