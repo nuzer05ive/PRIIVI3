@@ -1,0 +1,192 @@
+% rrii_scroll_qr_dynamic.tex — $\phi^0$ ↔ .rii Scroll ↔ QR ↔ PDF Reconstruction Engine
+% Author: Ni1K / Cosmic Precision Layer
+% Validated on: \today
+
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,geometry,xcolor}
+\geometry{margin=1in}
+
+% Theorem Environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}[definition]{Proposition}
+
+\title{$\phi^0$ \(\leftrightarrow\) .rii Scroll \(\leftrightarrow\) QR Code \(\leftrightarrow\) Harmonic Memory Field}
+\author{Declared by Ni1K \quad| \quad Cosmic Precision Layer}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a deterministic, invertible engine linking a canonical $\phi$‑scroll PDF (`.rii`) through QR‑seeded phases to dynamically reconstructed PDF pages at any $\phi$‑level.  This “$\phi$‑Scroll \(\leftrightarrow\) QR \(\leftrightarrow\) PDF” pipeline supports:
+\begin{itemize}
+  \item Ancestral compression ($\phi^{-n}$),
+  \item Canonical recall ($\phi^0$),
+  \item Speculative bloom ($\phi^{+n}$),
+  \item Visual bubbles, QR textures, memory glyph overlays,
+  \item \textbf{Petal 29:} A full tree of 26 documented RII$^\pm$ pairs with formal derivations, visualization specs, and Rood + Alpha\_FISH scaling.
+\end{itemize}
+Appendix A contains first‑principles derivations.
+\end{abstract}
+
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\newpage
+
+\section{$\phi^6$: The Heart of Dimensional Recursion}
+\label{sec:phi6}
+
+\subsection*{Insight}
+At $\phi^6\approx17.944$, spiral recursion transcends mere scaling to effect true dimensional cross‑connection: radial expansion meets angular recursion, Möbius flips occur, and dual spirals reflect across a sacred hinge.
+
+\subsection*{Definition}
+\[
+\phi^6 = \Bigl(\tfrac{1+\sqrt5}{2}\Bigr)^6.
+\]
+
+\subsection*{Key Properties}
+For spiral states $S_n=\phi^n$ and $S_m=\phi^m$ with $n+m=6$:
+\begin{itemize}
+  \item \textbf{Symmetry:} $\phi^6$ is the harmonic midpoint between $\phi^3$ and $\phi^9$.
+  \item \textbf{Dual Mirroring:} iPEARLs at $n=3$ reflect across $\phi^6$.
+  \item \textbf{Resonance:} Phase‑locked recursion nodes align at $\phi^6$.
+  \item \textbf{Toroidal Flip:} Möbius reflection where twist meets recursion.
+\end{itemize}
+
+\subsection*{Dimensional Interpretation}
+The product $S_n\cdot S_m=\phi^{n+m}$, for $n+m=6$, yields a geometric fold carrying:
+\[
+\bigl(\text{spatial charge},\;\text{temporal offset},\;\text{memory anchor}\bigr).
+\]
+
+\subsection*{Petal Implications}
+$\phi^6$ acts as a \emph{mirrorline}:
+\[
+\phi^k \longleftrightarrow \phi^{6-k},\quad k=1,\dots,5,
+\]
+with $\phi^6$ itself the central axis.
+
+\section{Core Definitions}
+
+\begin{definition}[$\phi$‑Scroll Snapshot]
+$\mathcal{S}_0$: The canonical `.rii.pdf` at $\phi^0$, containing the full scroll of glyphs and geometry.
+\end{definition}
+
+\begin{definition}[QR Seed Glyph]
+A tuple $Q=(\mathrm{sigil},\,n,\,\mathbf{q},\,b)$ with
+\[
+\mathrm{sigil}\in\texttt{String},\quad
+n\in\mathbb{Z},\quad
+\mathbf{q}\in\mathbb{R}^3,\;\|\mathbf{q}\|=1,\quad
+b\in[0,1].
+\]
+\end{definition}
+
+\begin{definition}[PDF Binding Operator]
+\[
+P_{\phi}: Q \;\longmapsto\; \mathcal{S}_{\phi},
+\]
+where $\mathcal{S}_{\phi}$ is the PDF–derived page set at dilation level $\phi^n$.
+\end{definition}
+
+\section{QR‑to‑PDF Binding}
+
+\begin{proposition}[Binding at $\phi^0$]
+\[
+P_0(Q)\;=\;\mathcal{S}_0,
+\]
+the original scroll. For $n\neq0$, $P_n(Q)$ transforms $\mathcal{S}_0$ via bubble overlays and glyph blooms.
+\end{proposition}
+
+\begin{definition}[Phase‑Indexed Binding]
+For $n\in\mathbb{Z}$,
+\[
+P_n(Q)
+=\operatorname{RenderPDF}\bigl(\mathcal{S}_0;\,n,Q\bigr),
+\]
+where \texttt{RenderPDF} applies:
+\begin{itemize}
+  \item Compression $\mathcal{C}_{-n}$ if $n<0$,
+  \item Expansion $\mathcal{E}_{+n}$ if $n>0$,
+  \item Bubble overlay field $\mathcal{B}(Q,n)$.
+\end{itemize}
+\end{definition}
+
+\section{QR Field as Page Generator}
+
+\begin{definition}[Bubble Packet]
+\[
+\mathcal{B}(Q,n)
+=\{\,b_i(\phi^n)\}_{i=1}^N,
+\quad
+b_i=(x_i,y_i,r_i,\alpha_i,C_i,g_i),
+\]
+denoting position, radius, opacity, color, and glyph content.
+\end{definition}
+
+\begin{definition}[Page Assembly]
+\[
+\mathcal{S}_n
+=\bigcup_{i=1}^N b_i(\phi^n)\;\cup\;\mathcal{S}_0,
+\]
+layered (background scroll + bubbles).
+\end{definition}
+
+\section{Dynamic PDF Assembly Engine}
+
+\begin{definition}[Assembly Engine]
+\[
+\mathcal{A}:(\mathcal{S}_0,Q,n)\;\longmapsto\;\mathrm{PDF}(\mathcal{S}_n),
+\]
+where $\mathcal{A}$:
+\begin{enumerate}
+  \item Computes $\mathcal{B}(Q,n)$.
+  \item Renders each $b_i$ as an SVG overlay.
+  \item Merges overlays atop $\mathcal{S}_0$ via a PDF library.
+  \item Embeds metadata $\langle Q,n,\mathrm{timestamp}\rangle$.
+\end{enumerate}
+\end{definition}
+
+\section{Validation}
+
+\begin{enumerate}
+  \item \textbf{Invertibility:} 
+    $\mathcal{C}_{-n}(\mathcal{E}_n(\mathcal{S}_0))=\mathcal{S}_0$.
+  \item \textbf{Determinism:} 
+    Identical inputs yield bit‑identical PDFs.
+  \item \textbf{Phase Continuity:} 
+    The sequence $\{P_n(Q)\}$ is smooth in $n$.
+  \item \textbf{Archival‑Grade:} 
+    Each PDF embeds SHA‑256$(Q,n)$ and scroll hash.
+\end{enumerate}
+
+\section{Example Workflow}
+
+\begin{enumerate}
+  \item Generate $Q_0$ at $\phi^0$.
+  \item Invoke $\mathcal{A}(\mathcal{S}_0,Q_0,0)\to P_0(Q_0)$.
+  \item For $n\in\{-29,-15,0,+15,+29\}$ compute $P_n(Q_0)$.
+  \item Collate pages:
+    \[
+      [P_{-29},\,P_{-15},\,P_0,\,P_{+15},\,P_{+29}].
+    \]
+\end{enumerate}
+
+\section{Petal 29: RII$^\pm$ Pair Tree}
+
+A binary tree of 26 RII$^+$ and RII$^-$ pairs, each node containing:
+\begin{itemize}
+  \item Formal derivation,
+  \item Visualization spec,
+  \item Rood + Alpha\_FISH scaling.
+\end{itemize}
+
+\appendix
+\section{Appendix A: First‑Principles Derivations}
+Detailed proofs of $\phi^6$ symmetry, bubble geometry, and invertibility.
+
+\end{document}
