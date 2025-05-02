@@ -39,7 +39,7 @@ function handleInput(e) {
 
     const userMsg = document.createElement("div");
     userMsg.className = "msg user";
-    userMsg.textContent = `🧍‍♂️ ${input}`;
+    userMsg.textContent = `🧕 ${input}`;
     chatLog.appendChild(userMsg);
 
     renderPersonaShell(persona);
