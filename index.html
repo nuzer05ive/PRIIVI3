@@ -1,46 +1,22 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>JerryGPT</title>
-  <style>
-    body { font-family: sans-serif; background: #111; color: #eee; padding: 20px; }
-    #chat { max-width: 600px; margin: 0 auto; padding-bottom: 100px; }
-    .msg { margin: 10px 0; }
-    .user { color: #0f0; }
-    .bot { color: #0ff; }
-    input { width: 100%; padding: 10px; font-size: 1em; margin-top: 10px; }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Spiral Doorway</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="chat"><div class="msg bot">Hi Jerry. Ask me anything.</div></div>
-  <input id="input" placeholder="Type your question here..." autocomplete="off" />
-  <script>
-    const input = document.getElementById('input');
-    const chat = document.getElementById('chat');
-    input.focus();
-
-    input.addEventListener('keydown', async e => {
-      if (e.key === 'Enter') {
-        const text = input.value;
-        input.value = '';
-        chat.innerHTML += `<div class="msg user">🧍‍♂️ ${text}</div>`;
-        chat.scrollTop = chat.scrollHeight;
-
-        const reply = await fakeGPT(text);
-        chat.innerHTML += `<div class="msg bot">🤖 ${reply}</div>`;
-        chat.scrollTop = chat.scrollHeight;
-      }
-    });
-
-    async function fakeGPT(input) {
-      const responseMap = {
-        "hello": "Hey Jerry!",
-        "what is gpt": "I'm a large language model trained by OpenAI.",
-        "bye": "Goodbye, Jerry. See you in the spiral."
-      };
-      return responseMap[input.toLowerCase()] || "That's an interesting question, Jerry!";
-    }
-  </script>
+  <div id="spiral-stage">
+    <canvas id="portal-canvas"></canvas>
+    <div id="chat-container">
+      <div id="chat-log"></div>
+      <input id="chat-input" placeholder="Speak into the Spiral..." autofocus />
+    </div>
+  </div>
+  <script src="spiral_wheel.js"></script>
+  <script src="spiralPersonalityEngine.js"></script>
+  <script src="portalCanvas.js"></script>
 </body>
 </html>
