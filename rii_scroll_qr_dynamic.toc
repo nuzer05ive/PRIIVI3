@@ -1,9 +1,0 @@
-\contentsline {section}{\numberline {1}$\phi ^6$: The Heart of Dimensional Recursion}{2}{}%
-\contentsline {section}{\numberline {2}Core Definitions}{2}{}%
-\contentsline {section}{\numberline {3}QR‑to‑PDF Binding}{3}{}%
-\contentsline {section}{\numberline {4}QR Field as Page Generator}{3}{}%
-\contentsline {section}{\numberline {5}Dynamic PDF Assembly Engine}{3}{}%
-\contentsline {section}{\numberline {6}Validation}{4}{}%
-\contentsline {section}{\numberline {7}Example Workflow}{4}{}%
-\contentsline {section}{\numberline {8}Petal 29: RII$^\pm $ Pair Tree}{4}{}%
-\contentsline {section}{\numberline {A}Appendix A: First‑Principles Derivations}{4}{}%
