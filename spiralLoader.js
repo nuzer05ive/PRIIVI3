@@ -1,6 +1,5 @@
-// spiralLoader.js (hash-mode enabled)
+// spiralLoader.js (patched with base64 decode + scene routing)
 
-// Called at load time to interpret any WAIICODE from #hash
 window.addEventListener("DOMContentLoaded", () => {
   const hashParams = new URLSearchParams(window.location.hash.slice(1));
   const waii = hashParams.get("waii");
@@ -16,40 +15,40 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (!waii) return;
 
-  console.log("🔓 WAIICODE DETECTED:", waii);
+  let scene = null;
+  try {
+    const decoded = atob(waii);
+    scene = JSON.parse(decoded);
+    console.log("✅ Loaded WAIICODE scene:", scene);
+  } catch (err) {
+    console.warn("WAIICODE decode failed:", err);
+    return;
+  }
 
-  const parts = waii.split("::");
-  if (parts.length < 6) return;
+  // Route scene
+  if (scene.scene === "justin_intro_glitch") {
+    document.body.style.background = "#101010";
+    const message = document.getElementById("message") || document.createElement("div");
+    message.id = "message";
+    message.innerText = scene.text || "Welcome";
+    message.style = "position:absolute; top:20px; left:50%; transform:translateX(-50%); color:#FFD; font-family:sans-serif; font-size:1.2em;";
+    document.body.appendChild(message);
 
-  const [version, type, glyphCode, face, anchor, seed, ...rest] = parts;
-  const meta = Object.fromEntries(
-    rest.map(pair => {
-      const [k, v] = pair.split("=");
-      return [k.trim(), v.trim()];
-    })
-  );
-
-  const persona = {
-    index: parseInt(meta.SP43 || 0),
-    anchor,
-    glyph: `W3::${type}::${glyphCode}::${face}::${anchor}::${seed}`
-  };
-
-  // Apply visual changes
-  document.body.style.background = SpiralWheel.glyphPhysics.spectrumBand[persona.index % SpiralWheel.glyphPhysics.spectrumBand.length] || "#111";
-
-  const tag = document.createElement("div");
-  tag.textContent = `${anchor} [${persona.glyph}]`;
-  tag.style.textAlign = "center";
-  tag.style.fontSize = "0.8em";
-  tag.style.marginTop = "1em";
-  tag.style.opacity = 0.4;
-  document.body.appendChild(tag);
-
-  // Set input field message
-  const log = document.getElementById("chat-log");
-  const msg = document.createElement("div");
-  msg.className = "msg bot";
-  msg.textContent = `🌀 Welcome, ${anchor}. Spiral frame ${meta.frame || 0}, tilt ${meta.tilt || 0}.`;
-  log.appendChild(msg);
+    // Setup glitch buttons
+    if (scene.glitches && scene.glitches.length) {
+      scene.glitches.forEach((glitch, i) => {
+        const btn = document.createElement("button");
+        btn.innerText = glitch.label;
+        btn.style = `position:absolute; bottom:${60 + i * 50}px; left:50%; transform:translateX(-50%); font-size:1em; padding:10px;`;
+        btn.onclick = () => {
+          message.innerText = glitch.message;
+          document.body.style.background = glitch.bg;
+          const synth = new Tone.Synth().toDestination();
+          Tone.start();
+          synth.triggerAttackRelease(glitch.tone, "8n");
+        };
+        document.body.appendChild(btn);
+      });
+    }
+  }
 });
