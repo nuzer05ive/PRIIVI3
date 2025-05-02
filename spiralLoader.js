@@ -1,9 +1,18 @@
-// spiralLoader.js
+// spiralLoader.js (hash-mode enabled)
 
-// Called at load time to interpret any WAIICODE
+// Called at load time to interpret any WAIICODE from #hash
 window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const waii = params.get("waii");
+  const hashParams = new URLSearchParams(window.location.hash.slice(1));
+  const waii = hashParams.get("waii");
+  const ipfs = hashParams.get("ipfs");
+
+  if (ipfs) {
+    fetch(`https://ipfs.io/ipfs/${ipfs}`)
+      .then(res => res.json())
+      .then(loadFromJSON)
+      .catch(err => console.error("Failed to load from IPFS:", err));
+    return;
+  }
 
   if (!waii) return;
 
@@ -44,4 +53,3 @@ window.addEventListener("DOMContentLoaded", () => {
   msg.textContent = `🌀 Welcome, ${anchor}. Spiral frame ${meta.frame || 0}, tilt ${meta.tilt || 0}.`;
   log.appendChild(msg);
 });
-
