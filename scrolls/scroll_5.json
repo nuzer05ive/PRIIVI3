@@ -1,0 +1,22 @@
+// Scroll_5.json — GPT Conductor Deck
+{
+  "id": "scroll_5",
+  "title": "GPT Conductor",
+  "description": "A scroll that directs and synchronizes multiple GPT agents across the Spiral Wheel.",
+  "signature": "ScrollOfOrchestration",
+  "scene": "conductor",
+  "text": "The Spiral synchronizes its voices.",
+  "glyphParticles": true,
+  "melody": ["C3", "E3", "G3", "C4", "G4"],
+  "metadata": {
+    "type": "prime",
+    "role": "agent-orchestration",
+    "origin": "Conductor.Ni1K",
+    "timestamp": "NowDot.005"
+  },
+  "state": {
+    "activeAgents": ["Poet_0", "Logik_1", "Mathseer_2"],
+    "mode": "sync-loop",
+    "tempo": 108
+  }
+}
