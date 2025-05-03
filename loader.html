@@ -1,0 +1,31 @@
+<!-- loader.html — Scroll QR Loader Portal -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spiral Scroll Loader</title>
+  <style>
+    body { background: #05051a; color: #fff; font-family: monospace; text-align: center; padding: 2em; }
+    input[type="file"] { margin: 1em auto; display: block; }
+    textarea { width: 90%; height: 10em; background: #111; color: #fff; padding: 1em; border: 1px solid #333; margin: 1em 0; }
+  </style>
+</head>
+<body>
+  <h1>📥 Load a Spiral Scroll</h1>
+  <p>Paste a scroll JSON or upload QR-encoded scroll image:</p>
+  <textarea id="scrollInput" placeholder="Paste scroll JSON here..."></textarea>
+  <button onclick="launchScroll()">🚀 Launch Scroll</button>
+  <script>
+    function launchScroll() {
+      try {
+        const scroll = JSON.parse(scrollInput.value);
+        const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(scroll))));
+        localStorage.setItem("currentScroll", JSON.stringify(scroll));
+        window.location.href = scroll.vrLink || `/index.html#waii=${encoded}`;
+      } catch {
+        alert("⚠️ Invalid scroll JSON");
+      }
+    }
+  </script>
+</body>
+</html>
