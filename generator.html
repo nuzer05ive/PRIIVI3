@@ -1,0 +1,41 @@
+<!-- generator.html — WAiiICode Scroll Generator and QR Minting Tool -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spiral Scroll Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body { background: #05051a; color: #fff; font-family: monospace; text-align: center; padding: 2em; }
+    textarea { width: 90%; height: 10em; background: #111; color: #fff; padding: 1em; border: 1px solid #333; }
+    canvas { margin: 1em auto; background: #fff; display: block; }
+  </style>
+</head>
+<body>
+  <h1>🌀 Spiral Scroll Generator</h1>
+  <p>Paste your scroll JSON here:</p>
+  <textarea id="scrollInput">{
+  "scroll": "WorldBuilder_Alpha",
+  "waaiicode": "W3::BLDR::p0t0::T::Seed::123abc",
+  "vrLink": "/scenes/world-builder/index.html"
+}</textarea>
+  <br>
+  <button onclick="generateQR()">🔳 Generate QR</button>
+  <div id="qrcode"></div>
+  <script>
+    function generateQR() {
+      const raw = scrollInput.value;
+      try {
+        const scroll = JSON.parse(raw);
+        const base64 = btoa(unescape(encodeURIComponent(JSON.stringify(scroll))));
+        const url = `https://riipl.xyz/#waii=${base64}`;
+        const qrWrap = document.getElementById('qrcode');
+        qrWrap.innerHTML = '';
+        new QRCode(qrWrap, { text: url, width: 256, height: 256 });
+      } catch (e) {
+        alert("⚠️ Invalid JSON");
+      }
+    }
+  </script>
+</body>
+</html>
