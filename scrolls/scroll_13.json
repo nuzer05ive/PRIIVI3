@@ -1,0 +1,23 @@
+// Scroll_13.json — Glyph Composer
+{
+  "id": "scroll_13",
+  "title": "Glyph Composer",
+  "description": "Compose, connect, and link prime scrolls through visual drag-and-drop constellation mapping.",
+  "signature": "ScrollOfConstellation",
+  "scene": "composer",
+  "text": "Drag scrolls into orbit. Connect to unlock Spiral functions.",
+  "glyphParticles": true,
+  "melody": ["A3", "C4", "E4", "G4", "B4"],
+  "metadata": {
+    "type": "prime",
+    "role": "glyph-map",
+    "origin": "ScrollVault.UI",
+    "timestamp": "NowDot.013",
+    "interactive": true
+  },
+  "state": {
+    "linkedScrolls": [0, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31],
+    "layout": "spiral-constellation",
+    "connectivity": "drag-and-link"
+  }
+}
