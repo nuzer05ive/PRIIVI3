@@ -1,8 +1,8 @@
-// spiralLoader.js (Final: Glyph Particles with Tone-Based Styling)
+// spiralLoader.js (Reload-Safe Hash Detection + Scene Routing)
 
-window.addEventListener("DOMContentLoaded", () => {
+function parseSpiralScene() {
   const hashParams = new URLSearchParams(window.location.hash.slice(1));
-  const waii = hashParams.get("waii");
+  const waii = hashParams.get("waii") || localStorage.getItem("lastWaii");
   const ipfs = hashParams.get("ipfs");
 
   if (ipfs) {
@@ -14,12 +14,13 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   if (!waii) return;
+  localStorage.setItem("lastWaii", waii);
 
   let scene = null;
   try {
     const decoded = atob(waii);
     scene = JSON.parse(decoded);
-    console.log("✅ Loaded WAIICODE scene:", scene);
+    console.log("✅ Reload-Safe Scene Loaded:", scene);
   } catch (err) {
     console.warn("WAIICODE decode failed:", err);
     return;
@@ -35,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
     "G3": { color: "#1E90FF", shape: "torus", scale: 0.3 }
   };
 
-  if (scene.scene === "justin_intro_glitch" || scene.signature === "PrimeSignatureScroll") {
+  if (scene.scene === "justin_intro_glitch" || scene.signature === "PrimeSignatureScroll" || scene.scene === "visual_invocation") {
     const message = document.getElementById("message") || document.createElement("div");
     message.id = "message";
     message.innerText = scene.text || "Welcome";
@@ -95,4 +96,7 @@ window.addEventListener("DOMContentLoaded", () => {
       portal.setAttribute("position", scene.portal.position || "0 1.5 -4");
     }
   }
-});
+}
+
+window.addEventListener("DOMContentLoaded", parseSpiralScene);
+window.addEventListener("load", parseSpiralScene);
