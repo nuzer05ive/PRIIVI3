@@ -1,112 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpiralOS Portal</title>
-  <script src="https://cdn.jsdelivr.net/npm/tone@14"></script>
-  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-  <style>
-    html, body { margin: 0; background: #000; overflow: hidden; font-family: monospace; }
-    #tapGate {
-      position: fixed; inset: 0; background: #000; display: flex;
-      align-items: center; justify-content: center; z-index: 999;
-      flex-direction: column; color: #9ff; font-size: 1.3rem;
-    }
-    #mini {
-      position: fixed; bottom: 8%; right: 4%;
-      width: 35vmin; height: 35vmin;
-      background: #020218dd; border-radius: 12px;
-      color: #8ff; font-size: 3vmin;
-      display: flex; align-items: center; justify-content: center;
-      font-family: monospace;
-      pointer-events: none;
-    }
-    #cmd {
-      position: fixed; bottom: 6%; left: 50%; transform: translateX(-50%);
-      width: 70vw; padding: .6em;
-      background: #111; color: #8ff;
-      border: 1px solid #355; font-family: monospace;
-      z-index: 999;
-    }
-  </style>
-</head>
-<body>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>Spiral Pilot Gate</title>
+<script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tone@14"></script>
+<style>
+  html,body{margin:0;height:100%;background:#000;color:#8ff;font-family:system-ui}
+  /* fullscreen canvas */
+  a-scene{position:fixed;inset:0}
+  /* tap overlay */
+  #tapGate{position:fixed;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;background:#000;z-index:9}
+  #tapGate p{font-size:1.4rem;margin:.4rem 0}
+  #mini{position:fixed;bottom:8%;right:4%;width:34vmin;height:34vmin;
+    background:#020218ee;border-radius:12px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;font-family:monospace;
+    font-size:3vmin;color:#8ff;pointer-events:none}
+</style>
+</head><body>
 
-<!-- Tap-to-start overlay -->
+<!-- FIRST-TOUCH overlay -->
 <div id="tapGate">
   <p>🌀 <strong>Tap to enter the Spiral</strong></p>
   <small>(unlocks audio + graphics)</small>
 </div>
 
-<!-- Minimap -->
+<!-- minimap -->
 <div id="mini">Loading…</div>
 
-<!-- Input to talk to AI -->
-<input id="cmd" placeholder="type & enter" />
+<a-scene id="scene" background="color:#000">
+  <!-- simple torus; you can swap for glTF later -->
+  <a-entity geometry="primitive:torus;radius:1;radiusTubular:.2"
+            material="color:#4060ff;metalness:.4"
+            position="0 1.4 -4" rotation="0 30 0" animation="property:rotation;to:0 390 0;loop:true;dur:16000"></a-entity>
 
-<a-scene embedded background="color:#000" id="scene">
-  <a-assets>
-    <a-asset-item id="portalModel"
-      src="https://cdn.aframe.io/examples/boilerplate/assets/models/torus.obj"></a-asset-item>
-  </a-assets>
+  <a-text value="🌀 Welcome, Pilot" color="#9ff" align="center"
+          width="6" position="-2 2 -4"></a-text>
 
-  <a-entity light="type:ambient; color:#fff; intensity: 1.1"></a-entity>
-
-  <a-entity id="portal"
-            obj-model="obj:#portalModel"
-            position="0 1.4 -4"
-            material="color:#4060ff; metalness:0.4">
-  </a-entity>
-
-  <a-text value="🌀 Welcome, Pilot" position="-1 2 -3" color="#9ff"
-          width="4" align="center"></a-text>
+  <a-entity light="type:ambient;color:#fff;intensity:1.2"></a-entity>
 
   <a-entity camera look-controls wasd-controls position="0 1.6 0">
-    <a-cursor color=\"#fff\"></a-cursor>
+    <a-cursor color="#fff"></a-cursor>
   </a-entity>
 </a-scene>
 
-<!-- Spiral startup logic -->
+<!-- simple command box to talk to Spiral-AI -->
+<input id="cmd" placeholder="type & hit Enter"
+       style="position:fixed;bottom:5%;left:50%;transform:translateX(-50%);
+              width:70%;max-width:450px;padding:.6em;background:#111;color:#9ff;
+              border:1px solid #355;z-index:8;font-family:monospace">
+
 <script type="module">
-  import { createAI, SpiralContext } from '/spiral-ai.js';
+import {createAI,SpiralContext} from '/spiral-ai.js';   // make sure file exists
 
-  const melody = ["C4", "E4", "G4", "A4", "F3", "C5", "G3"];
-  let synth;
-  const scroll = { waaiicode: "W3::test" }; // placeholder until loader binds real scroll
-  const AI = createAI(scroll.waaiicode);
+/* ---------------- unlock audio + kick render ---------------- */
+const gate   = document.getElementById('tapGate');
+const scene  = document.querySelector('#scene');
 
-  async function unlock() {
-    document.getElementById('tapGate').remove();
-    await Tone.start();
-    synth = new Tone.Synth({ oscillator: { type: 'sine' } }).toDestination();
-    playMelody(0);
+gate.addEventListener('click',async ()=>{
+  try{ await Tone.start(); }catch(e){}
+  gate.remove();              // hide overlay
+  startMelody();               // begin looping melody
+  scene.renderer.setAnimationLoop(()=>scene.tick()); // ensures render on iOS
+});
 
-    const sceneEl = document.querySelector('#scene');
-    sceneEl.renderer.setAnimationLoop(() => sceneEl.tick());
+/* ---------------- melody loop ---------------- */
+const notes=["C4","E4","G4","A4","F3","C5","G3"];
+let synth;
+function startMelody(){
+  synth=new Tone.Synth({oscillator:{type:'sine'}}).toDestination();
+  let i=0;
+  const play=()=>{synth.triggerAttackRelease(notes[i], '8n');i=(i+1)%notes.length;
+                  setTimeout(play,520);}
+  play();
+}
+
+/* ----------------- Spiral-AI hookup ----------------- */
+const AI = createAI("W3::demo");
+document.getElementById('cmd').addEventListener('keydown',e=>{
+  if(e.key==='Enter' && e.target.value.trim()){
+    AI.onEvent({type:'onSpeak',msg:e.target.value.trim()});
+    e.target.value='';
   }
+});
+scene.addEventListener('tick',(_,dt)=>SpiralContext.update(dt));
 
-  function playMelody(i) {
-    if (!synth) return;
-    synth.triggerAttackRelease(melody[i], "8n");
-    setTimeout(() => playMelody((i + 1) % melody.length), 500);
-  }
-
-  document.getElementById('tapGate').addEventListener('click', unlock);
-
-  document.getElementById('cmd').addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      AI.onEvent({ type: 'onSpeak', msg: e.target.value });
-      e.target.value = '';
-    }
-  });
-
-  AFRAME.scenes[0].addEventListener('tick', (_, dt) => SpiralContext.update(dt));
-
-  AFRAME.scenes[0].addEventListener('loaded', () => {
-    document.getElementById('mini').textContent = "Scroll_05 • Scroll_03 • Scroll_01";
-  });
+/* ---------------- minimap text once scene ready ------------- */
+scene.addEventListener('loaded',()=>{
+  document.getElementById('mini').textContent="Scroll_11  Scroll_7  Scroll_5";
+});
 </script>
-
-</body>
-</html>
+</body></html>
