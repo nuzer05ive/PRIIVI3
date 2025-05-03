@@ -1,0 +1,152 @@
+<!-- qr_scroll_portal.html  –  WAiiIC0D3 generator-&-loader, v0.9  -->
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>🌀 WAiiIC0D3 Scroll Portal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--bg:#05051a;--panel:#111;--c:#8ff;--accent:#7F00FF}
+html,body{margin:0;background:var(--bg);color:#fff;font-family:monospace}
+h1{font-size:1.4rem;text-align:center;margin:.8em 0}
+textarea{width:92%;height:9em;margin:0 4%;background:var(--panel);
+         color:#fff;border:1px solid #333;padding:.8em;border-radius:6px}
+button,select,input[type=number]{font:inherit;padding:.4em .8em;margin:.3em;
+  color:#fff;background:var(--accent);border:none;border-radius:4px;cursor:pointer}
+button:disabled{opacity:.4;cursor:default}
+#qr canvas{background:#fff;padding:.6em;border-radius:6px;margin:1em auto;display:block}
+#vaultList{padding:1em 4%;font-size:.9em}
+pre{background:#000c;padding:.7em;border:1px solid #222;overflow-x:auto}
+.small{font-size:.8em;color:#aaa}
+</style></head><body>
+
+<h1>🌀 WAiiIC0D3 Scroll Portal</h1>
+
+<p style="text-align:center;margin:0 4% .3em">Paste or edit any scroll JSON:</p>
+<textarea id="scrollInput">
+{
+  "signature": "OmegaWhaleScroll",
+  "scroll": "The Whale Beyond Time",
+  "waaiicode": "W3::WHALE::ll0z∞::Z::OmegaWhale::0000mins",
+  "type": "WHALE",
+  "glyphLayer": 4,
+  "vrLink": "/launch-scroll/nowdot-void.html"
+}
+</textarea>
+
+<label><input type="checkbox" id="lz">Compressed (LZ-String)</label>
+<button id="btnGen">Generate QR</button>
+<button id="btnSave">📦 Save to Vault</button>
+
+<div id="qr"></div>
+
+<hr style="border:none;border-top:1px solid #222;margin:1.2em 4%">
+
+<!-- Vault filters -->
+<div style="text-align:center">
+  <label>Type: 
+    <select id="fType"><option value="">(all)</option></select>
+  </label>
+  <label>Glyph:
+    <input id="fGlyph" type="number" min="0" max="9" style="width:50px">
+  </label>
+  <button onclick="renderVault()">Filter</button>
+  <button onclick="exportVault()">⬇️ Export Vault</button>
+  <button onclick="clearVault()">🧹 Clear Vault</button>
+</div>
+
+<div id="vaultList"><h2 style="text-align:center">📜 ScrollVault</h2></div>
+
+<!-- ===== Scripts ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+<script>
+/* ---------- core helpers ---------- */
+const $ = id=>document.getElementById(id);
+const vaultKey = "scrollVault";
+
+/* ---------- QR generation ---------- */
+$('btnGen').onclick = () =>{
+  const raw = $('scrollInput').value.trim();
+  let js; try{ js = JSON.parse(raw); }catch{ return alert("❌ Invalid JSON"); }
+  localStorage.setItem("currentScroll", raw);               // stash for VR page
+
+  const b64 = $('lz').checked
+        ? btoa(LZString.compressToUTF16(raw))
+        : btoa(unescape(encodeURIComponent(raw)));
+  const payload = `data:application/json${$('lz').checked?'+lz':''};base64,${b64}`;
+
+  $('qr').innerHTML='';
+  new QRCode($('qr'),{text:payload,width:256,height:256,colorDark:"#000",colorLight:"#fff"});
+
+  /* auto-download PNG */
+  setTimeout(()=>{
+    const canvas = $('qr').querySelector('canvas');
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL();
+    link.download = `QR_${(js.signature||js.scroll||'scroll').replace(/\s+/g,'_')}.png`;
+    link.click();
+  },300);
+};
+
+/* ---------- Vault persistence ---------- */
+function loadVault(){ return JSON.parse(localStorage.getItem(vaultKey)||'{}'); }
+function saveVault(v){ localStorage.setItem(vaultKey,JSON.stringify(v)); }
+
+$('btnSave').onclick = () =>{
+  try{
+    const sc = JSON.parse($('scrollInput').value);
+    const v = loadVault();
+    const k = sc.signature || sc.scroll || Date.now();
+    v[k]=sc; saveVault(v); renderVault();
+    alert("✅ Saved to Vault: "+k);
+  }catch(e){ alert("❌ cannot save");}
+};
+
+/* ---------- Vault UI ---------- */
+function renderVault(){
+  const v = loadVault();
+  const list=$('vaultList'); list.innerHTML='<h2 style="text-align:center">📜 ScrollVault</h2>';
+  const typeF = $('fType').value, glyphF=$('fGlyph').value;
+  const typesSeen=new Set;
+
+  Object.entries(v).forEach(([k,val])=>{
+    if(typeF && val.type!==typeF) return;
+    if(glyphF && +val.glyphLayer!==+glyphF) return;
+
+    /* type options collect */
+    if(val.type) typesSeen.add(val.type);
+
+    const btn = document.createElement('button');
+    btn.textContent='🚀 '+k;
+    btn.onclick=()=>{ localStorage.setItem("currentScroll",JSON.stringify(val));
+                      location.href = val.vrLink || '/index.html'; };
+    list.appendChild(btn);
+
+    const pre=document.createElement('pre');
+    pre.textContent=JSON.stringify(val,null,2);
+    list.appendChild(pre);
+  });
+
+  /* update filter dropdown once */
+  if(!$('fType').dataset.filled){
+    typesSeen.forEach(t=>{
+      const opt=document.createElement('option'); opt.value=opt.textContent=t;
+      $('fType').appendChild(opt);
+    });
+    $('fType').dataset.filled=1;
+  }
+}
+renderVault();
+
+/* ---------- maintenance buttons ---------- */
+function exportVault(){
+  const blob=new Blob([localStorage.getItem(vaultKey)||'{}'],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='ScrollVault.json'; a.click();
+}
+function clearVault(){
+  if(!confirm("Clear vault (non-recoverable)?"))return;
+  localStorage.removeItem(vaultKey); renderVault();
+}
+</script>
+</body></html>
