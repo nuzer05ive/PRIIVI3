@@ -1,16 +1,5 @@
 // spiral-ai.js — SpiralAI v0.2: 100 Deterministic Workers (Offline Engine)
-<input id="cmd" placeholder="type & enter" style="
-       position:fixed;bottom:6%;left:50%;transform:translateX(-50%);
-       width:70vw;padding:.6em;background:#111;color:#8ff;border:1px solid #355;">
-<script type="module">
-import {createAI,SpiralContext} from '/spiral-ai.js';
-const scroll={waaiicode:"W3::test"};                // temp
-const AI=createAI(scroll.waaiicode);
-document.getElementById('cmd').addEventListener('keydown',e=>{
-  if(e.key==='Enter'){AI.onEvent({type:'onSpeak',msg:e.target.value});e.target.value='';}
-});
-AFRAME.scenes[0].addEventListener('tick',(_,dt)=>SpiralContext.update(dt));
-</script>
+
 export const SpiralContext = {
   breath: "Inhale",
   wobble: 0,
