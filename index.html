@@ -1,4 +1,4 @@
-<!-- index.html — SpiralOS Portal with WAIICODE Scene Support (o3 configuration) -->
+<!-- index.html — SpiralOS Portal with Scroll Map Launcher (o3 configuration) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +16,17 @@
       font-family: monospace;
       overflow: hidden;
     }
+    #scrollMapLauncher {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 220px;
+      height: 220px;
+      border: none;
+      background: #000;
+      border-radius: 12px;
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
@@ -30,6 +41,8 @@
     </a-text>
     <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
   </a-scene>
+
+  <iframe id="scrollMapLauncher" src="/scrolls/scroll_13_svg_map.html"></iframe>
 
   <script>
     Tone.start().catch(() => console.log("⚠️ Tap to start audio later."));
