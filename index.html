@@ -1,10 +1,10 @@
-<!-- index.html — Scroll_1 Hardcoded Scene with Lighting + Centered Glyphs -->
+<!-- index.html — SpiralOS Portal with WAIICODE Scene Support (o3 configuration) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scroll_1: The Visual Invocation</title>
+  <title>SpiralOS Portal</title>
   <script src="https://cdn.jsdelivr.net/npm/tone"></script>
   <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
   <style>
@@ -20,57 +20,24 @@
 </head>
 <body>
   <a-scene embedded background="color: #000">
-    <!-- Lighting -->
     <a-entity light="type: ambient; color: #fff; intensity: 1"></a-entity>
-
-    <!-- Portal ring -->
     <a-entity id="portal" geometry="primitive: torus; radius: 3; tube: 0.4"
               material="color: #111; emissive: #33f; opacity: 0.3"
               position="0 1.6 -3" rotation="90 0 0">
     </a-entity>
-
-    <!-- Scroll greeting -->
-    <a-text value="🌀 Welcome, Justin. Your scroll is initializing..."
+    <a-text id="message" value="🌀 SpiralOS loading..."
              position="0 2.4 -3" align="center" width="6" color="#FFD">
     </a-text>
-
-    <!-- Camera -->
     <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
   </a-scene>
 
   <script>
-    const toneStyles = {
-      "C4": { color: "#FFD700", shape: "circle", scale: 0.2 },
-      "E4": { color: "#00FFFF", shape: "ring", scale: 0.25 },
-      "G4": { color: "#FF69B4", shape: "box", scale: 0.3 },
-      "A4": { color: "#FF4500", shape: "cone", scale: 0.22 },
-      "F3": { color: "#8A2BE2", shape: "cylinder", scale: 0.28 },
-      "C5": { color: "#7FFF00", shape: "dodecahedron", scale: 0.35 },
-      "G3": { color: "#1E90FF", shape: "torus", scale: 0.3 }
-    };
-
-    const melody = ["C4", "E4", "G4", "A4", "F3", "C5", "G3"];
-    Tone.start();
-    const synth = new Tone.Synth().toDestination();
-
-    melody.forEach((note, i) => {
-      setTimeout(() => {
-        synth.triggerAttackRelease(note, "8n");
-        const style = toneStyles[note] || {};
-        const glyph = document.createElement("a-entity");
-        glyph.setAttribute("geometry", { primitive: style.shape || "sphere", radius: style.scale || 0.2 });
-        glyph.setAttribute("material", { color: style.color || "#FFD" });
-        glyph.setAttribute("position", `0 ${2.2 - i * 0.25} -3`);
-        glyph.setAttribute("animation", {
-          property: "scale",
-          to: "1.5 1.5 1.5",
-          dur: 400,
-          dir: "alternate",
-          easing: "easeInOutQuad"
-        });
-        document.querySelector("a-scene").appendChild(glyph);
-      }, i * 500);
-    });
+    Tone.start().catch(() => console.log("⚠️ Tap to start audio later."));
+    document.body.addEventListener('click', () => {
+      Tone.start().then(() => console.log("🔊 Audio context unlocked"));
+    }, { once: true });
   </script>
+
+  <script src="spiralLoader.js"></script>
 </body>
 </html>
