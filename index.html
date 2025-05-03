@@ -1,56 +1,74 @@
-<!-- index.html — SpiralOS Portal with Scroll Map Launcher (o3 configuration) -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpiralOS Portal</title>
-  <script src="https://cdn.jsdelivr.net/npm/tone"></script>
-  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+  …
+  <script src="https://cdn.jsdelivr.net/npm/tone@14"></script>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: monospace;
-      overflow: hidden;
-    }
-    #scrollMapLauncher {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 220px;
-      height: 220px;
-      border: none;
-      background: #000;
-      border-radius: 12px;
-      z-index: 999;
-    }
+    #tapGate{
+      position:fixed;inset:0;background:#000;display:flex;
+      align-items:center;justify-content:center;z-index:999;
+      font-family:system-ui;font-size:1.3rem;color:#9ff;flex-direction:column}
+    #mini{position:fixed;bottom:8%;right:4%;width:35vmin;height:35vmin;
+          background:#020218dd;border-radius:12px;color:#8ff;
+          pointer-events:none; /* so clicks pass through */
+          font-family:monospace;font-size:3vmin;display:flex;
+          align-items:center;justify-content:center}
   </style>
 </head>
 <body>
-  <a-scene embedded background="color: #000">
-    <a-entity light="type: ambient; color: #fff; intensity: 1"></a-entity>
-    <a-entity id="portal" geometry="primitive: torus; radius: 3; tube: 0.4"
-              material="color: #111; emissive: #33f; opacity: 0.3"
-              position="0 1.6 -3" rotation="90 0 0">
-    </a-entity>
-    <a-text id="message" value="🌀 SpiralOS loading..."
-             position="0 2.4 -3" align="center" width="6" color="#FFD">
-    </a-text>
-    <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
-  </a-scene>
 
-  <iframe id="scrollMapLauncher" src="/scrolls/scroll_13_svg_map.html"></iframe>
+<div id="tapGate">
+  <p>🌀 <strong>Tap to enter the Spiral</strong></p>
+  <small>(unlocks audio + graphics)</small>
+</div>
 
-  <script>
-    Tone.start().catch(() => console.log("⚠️ Tap to start audio later."));
-    document.body.addEventListener('click', () => {
-      Tone.start().then(() => console.log("🔊 Audio context unlocked"));
-    }, { once: true });
-  </script>
+<!-- minimap -->
+<div id="mini">Loading…</div>
 
-  <script src="spiralLoader.js"></script>
+<a-scene embedded background="color:#000" id="scene">
+  <a-assets>
+    <a-asset-item id="portalModel"
+      src="https://cdn.aframe.io/examples/boilerplate/assets/models/torus.obj"></a-asset-item>
+  </a-assets>
+
+  <a-entity light="type:ambient;color:#fff;intensity:1.1"></a-entity>
+  <a-entity id="portal" obj-model="obj:#portalModel"
+            position="0 1.4 -4" material="color:#4060ff;metalness:0.4"></a-entity>
+
+  <a-text value="🌀 Welcome, Pilot" position="-1 2 -3" color="#9ff"
+          width="4" align="center"></a-text>
+
+  <a-entity camera look-controls wasd-controls position="0 1.6 0">
+    <a-cursor color="#fff"></a-cursor>
+  </a-entity>
+</a-scene>
+
+<script>
+/* melody array is fine */
+const melody=["C4","E4","G4","A4","F3","C5","G3"];
+let synth;
+
+async function unlock(){
+  document.getElementById('tapGate').remove();
+  await Tone.start();
+  synth = new Tone.Synth({oscillator:{type:'sine'}}).toDestination();
+  playMelody(0);
+
+  /* resume aframe render loop (iOS) */
+  const sceneEl = document.querySelector('#scene');
+  sceneEl.renderer.setAnimationLoop(()=>sceneEl.tick());
+}
+
+function playMelody(i){
+  if(!synth) return;
+  synth.triggerAttackRelease(melody[i], "8n");
+  setTimeout(()=>playMelody((i+1)%melody.length), 500);
+}
+
+document.getElementById('tapGate').addEventListener('click', unlock);
+
+/* ------------ minimap populate once portal loaded ------------ */
+AFRAME.scenes[0].addEventListener('loaded',()=>{
+  const mini=document.getElementById('mini');
+  mini.textContent="Scroll_11 • Scroll_7 • Scroll_5";
+});
+</script>
 </body>
-</html>
