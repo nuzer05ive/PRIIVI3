@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scroll A3 – Dewey’s First Jump</title>
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; }
+    #score {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-family: monospace;
+      color: #0ff;
+      font-size: 1.2rem;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+<div id="score">Jumps: 0</div>
+
+<a-scene background="color: black">
+  <a-entity id="dewey" geometry="primitive: circle; radius: 0.2"
+            material="color: #0ff"
+            position="0 1.6 -3">
+  </a-entity>
+
+  <a-entity id="platform" geometry="primitive: ring; radiusInner: 0.3; radiusOuter: 0.35"
+            material="color: #f0f"
+            position="0 1 -3">
+  </a-entity>
+
+  <a-camera position="0 1.6 0"></a-camera>
+</a-scene>
+
+<script>
+  let jumps = 0;
+  const dewey = document.getElementById('dewey');
+  const score = document.getElementById('score');
+
+  document.body.addEventListener('keydown', () => {
+    const y = parseFloat(dewey.getAttribute('position').y);
+    let t = 0;
+    const jump = setInterval(() => {
+      t += 0.05;
+      const newY = y + Math.sin(t * Math.PI) * 0.6;
+      dewey.setAttribute('position', `0 ${newY} -3`);
+      if (t >= 1) {
+        clearInterval(jump);
+        jumps++;
+        score.innerText = `Jumps: ${jumps}`;
+      }
+    }, 16);
+  });
+</script>
+
+</body>
+</html>
